@@ -9,7 +9,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::group(['middleware' => ['web']], function(){
     Route::get('/', function () {
         return view('pages.welcome');
     });
@@ -22,9 +21,6 @@ Route::group(['middleware' => ['web']], function(){
 
 	Route::resource('foros', 'ForoController');
 
-	Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-	Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
-	Route::post('password/reset', 'Auth\PasswordController@reset');
 
 	Route::resource('categories', 'CategoryContoller', ['except' => ['create']]);
 
@@ -92,4 +88,3 @@ Route::post('/', function(){
 
 		return ('Ok');
 	});
-});

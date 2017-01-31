@@ -1,63 +1,95 @@
-@extends('main')
-@section('title', '| Editar Perfil')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Selcius | Edit profile</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-@section('content')
+<body>
+    <style>
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #4ECDC4;
+}
+
+#login-page {
+   width: 500px;
+}
+
+.card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%)
+     -webkit-transform: translate(-50%, -50%)
+     -ms-transform: translate(-50%, -50%)
+     -o-transform: translate(-50%, -50%)
+     transform: translate(-50%, -50%);
+}
+</style>
 @if(Auth::guest())
-<link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet">
-<div class="media">
-  <div class="media-left">
-    <i class="fa fa-user fa-5x" style="margin-right: 10px;"></i>
-  </div>
-  <div class="media-body">
-    <textarea class="materialize-textarea" disabled style="margin-top: 10px;" cols="40" rows="10"></textarea>
-    <a disabled style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue" onclick="Materialize.toast('Para participar de los comentarios debes Iniciar Sesión/Registrarte.', 4000)"><i class="material-icons left">send</i>submit</a>
-  </div>
-  <div class="media" align="center">
-    <p style="font-family: 'Baloo Thambi', cursive;font-size: 35px;"><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> inicia sesión </a> / <a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> registrate </a></p>
-  </div>
-</div>
 @else
-  @if(Auth::user()->id == $user->id)
-    <div class="row">
-      <div class="card">
-        <div class="card-content">
-          <p class="text-center"><i class="fa fa-address-card fa-5x" aria-hidden="true"></i></p>
-          {!! Form::model($user, ['route' => ['auth.update', $user->id], 'method' => 'PUT', 'files' => true]) !!}
-            <p><img src="{{asset('avatars/'.$user->image)}}" class="profile-user-img img-responsive img-circle" style="width: 64px;height: 64px;border-radius: 50%;margin-right: 10px;" align="left">
-              <div class="file-field input-field">
-                <div class="btn">
-                  <i style="margin-right: 3px;" class="fa fa-camera-retro" aria-hidden="true"> </i>
-                  <span> Avatar</span>
-                  <input type="file" name="featured_image">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text">
-                </div>
-              </div>
-            </p>
-            <br>
-            <div class="input-field">
-              <i class="fa fa-user prefix" aria-hidden="true"></i>
-              <input required type="text" name="name" value="{{$user->name}}" id="name">
-              <label for="name">Nombre</label>
-            </div>
-            <div class="input-field">
-              <i class="fa fa-envelope prefix" aria-hidden="true"></i>
-              <input required id="email" type="email" name="email" value="{{$user->email}}">
-              <label for="email">Email</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">mode_edit</i>
-              <textarea id="description" name="description" required class="materialize-textarea">{{$user->description}}</textarea>
-              <label for="description">Descripción</label>
-            </div>
-            <button class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>send</button>
-          {!!Form::close()!!}
+@if(Auth::user()->id != $user->id)
+@else
+<body ng-app="mainModule" ng-controller="mainController">
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      {!! Form::model($user, ['route' => ['auth.update', $user->id], 'method' => 'PUT', 'files' => true, 'class' => 'login-form']) !!}
+        {{ csrf_field() }}
+        <div class="row">
         </div>
-      </div>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span><i class="material-icons prefix" style="margin-left:6px;" aria-hidden="true">image</i></span>
+            <input type="file" name="featured_image">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" name="name" value="{{$user->name}}" placeholder="Full Name" autofocus required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mail_outline</i>
+            <input type="email" name="email" value="{{$user->email}}" placeholder="Email" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">comment</i>
+            <textarea name="description" class="materialize-textarea" placeholder="Description" cols="30" rows="10">{!!$user->description!!}</textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn waves-effect waves-light col s12" type="submit">Send</button>
+          </div>
+        </div>
+      {!!Form::close()!!}
     </div>
-    @else
-    
+  </div>
+  </body>
   @endif
-@endif
-@endsection
+  @endif
+</div>
+
+</html>

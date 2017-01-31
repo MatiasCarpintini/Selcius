@@ -29,16 +29,15 @@
       <div class="col-md-12 col-xs-12">
         <div class="converstation">
             <div class="media">
-                <div class="media-left">
-                  <img style="margin-left: 10px;" class="media-object circle z-depth-4" src="{{asset('avatars/'.$articulo->user->image)}}">
-                  <br>
-                </div>
                 <div class="media-body">
                     <div class="clearfix">
                         <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
-                        <a href="{{route('auth.profiles', $articulo->user->id)}}"><p style="font-size: 35px;font-family: 'Maven Pro', sans-serif;" class="media-heading pull-left" aling="">{{$articulo->user->name}}</p></a>
+                        <a href="{{route('auth.profiles', $articulo->user->id)}}">
+                            <p style="font-size: 35px;font-family: 'Maven Pro', sans-serif;" class="media-heading pull-left" aling="">
+                            <img style="width: 52px;height: 52px;border-radius: 50%;margin-left:10px;" class="z-depth-4" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$articulo->user->name}}</p></a>
+
                     </div>
-                    <p>{!!$articulo->user->description!!}</p>
+                    <p style="margin-top:20px;margin-left: 70px;">{!!$articulo->user->description!!}</p>
                 </div>
             </div>
         </div>
@@ -58,18 +57,16 @@
         <div class="converstation">
           @foreach($articulo->comments as $comment)
             <div class="media">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object img-circle"src="{{asset('avatars/'.$articulo->user->image)}}">
-                    </a>
-                </div>
                 <div class="media-body">
                     <div class="clearfix">
-                        <a href="{{route('auth.profiles', $comment->user->image)}}"><p style="font-size: 40px;" class="media-heading pull-left">{{$comment->user->name}}
-                        </p> </a>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span>
+                        <a href="{{route('auth.profiles', $comment->user->id)}}">
+                            <p style="font-size: 40px;" class="media-heading pull-left">
+                                <img style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$comment->user->name}}
+                            </p>
+                        </a>
                     </div>
                     <p>{{$comment->comment}}</p>
+                    <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span>
                     @if(Auth::guest())
 
                     @else
@@ -107,13 +104,11 @@
           </div>
             @else
             <div class="media">
-              <div class="media-left">
-                <img src="{{asset('avatars/'.Auth::user()->image)}}" class="circle">
-              </div>
             <div class="media-body">
               <form action="{{route('comments.store', $articulo->id)}}" method="POST">
               {{csrf_field()}}
-                <textarea class="materialize-textarea" style="margin-top: 35px;" name="comment" cols="40" rows="10"></textarea>
+              <p><img src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-left: 20px;">{{Auth::user()->name}}</p>
+                <textarea class="materialize-textarea" style="margin-left: 20px;" name="comment" cols="40" rows="10"></textarea>
                 <input name="user_id" value="{{Auth::user()->id}}" hidden></input>
                 <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
               </form>

@@ -1,22 +1,67 @@
-@extends('main')
-@section('head')
-@section('title', '| Olvidé mi contraseña')
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Selcius | Olvidé mi contraseña</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-@section('content')
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="box">
-				<div class="box-header" align="center"><img src="{{asset('img/password.png')}}" widht="256" height="256"><p style="font-family: 'Quicksand', sans-serif;font-size: 40px;" class="text-center">¿Forgot your password?</p></div>
-					<form action="{{url('password/email')}}" method="POST">
-					{{csrf_field()}}
-					<div class="input-field col s12">
-						<a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enviaremos un correo electrónico sobre cómo reestablecer tu contraseña a la dirección de correo electrónico asociada a tu cuenta."><input required placeholder="Email" id="email" type="email" name="email" class="validate"> </a>
-					</div>
-					</form>
+<body>
+    <style>
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #4ECDC4;
+}
 
-				</div>
-			</div>
-		</div>
-	</div>
-@endsection
+#login-page {
+   width: 500px;
+}
+
+.card {
+     position: absolute;
+     left: 50%;
+     top: 50%;
+     -moz-transform: translate(-50%, -50%)
+     -webkit-transform: translate(-50%, -50%)
+     -ms-transform: translate(-50%, -50%)
+     -o-transform: translate(-50%, -50%)
+     transform: translate(-50%, -50%);
+}
+</style>
+<body ng-app="mainModule" ng-controller="mainController">
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		@if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+		<div class="box-header" align="center"><p style="font-family: 'Nunito', sans-serif;font-size: 40px;" class="text-center">¿Forgot your password?</p></div>
+		<p style="font-family: 'Nunito', sans-serif;font-size: 15px;margin-left: 30px;color: #FF8800;">* Enviaremos un correo electrónico sobre cómo reestablecer tu contraseña a la dirección de correo electrónico asociada a tu cuenta.</p>
+  		  <form role="form" method="POST" action="{{ url('/password/email') }}">
+  		  	{{csrf_field()}}
+  		  	<div class="input-field col s12">
+				<i class="material-icons prefix">mail_outline</i>
+  			  <input autofocus="" required placeholder="Email" type="email" name="email" class="validate">
+  		  	</div>
+  		</form>
+    </div>
+  </div>
+  </body>
+</div>
+
+</html>
