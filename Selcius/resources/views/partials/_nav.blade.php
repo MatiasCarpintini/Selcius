@@ -6,7 +6,7 @@
         <li class="{{ Request::is('courses') ? "active" : "" }}"><a href="/courses"><i class="fa fa-book"></i>           Cusos</a></li>
         <li class="{{ Request::is('articles') ? "active" : "" }}"><a href="/articles"><i class="fa fa-newspaper-o"></i>   Artículos</a></li>
         <li class="{{ Request::is('foros') ? "active" : "" }}"><a href="/foros"><i class="fa fa-group"></i>   Foros</a></li>
-        <li class="{{ Request::is('about-us') ? "active" : "" }}"><a href="/about-us"><i class="fa fa-user"></i> About Us</a></li>
+        <li class="{{ Request::is('about-us') ? "active" : "" }}"><a href="/about-us"><i class="fa fa fa-question-circle"></i> About Us</a></li>
         <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact"><i class="fa  fa-envelope"></i>     Contacto</a></li>
     </ul>
     @endif
@@ -56,8 +56,17 @@
         <li class="{{ Request::is('tags.index')}}"><a href="/tags"><i class="fa fa-tags"></i> Tags</a></li>
         <li class="divider"></li>
         <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i> Perfil</a></li>
-        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+        <li>
+            <a href="{{ url('/logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out"></i> Logout
+            </a>
 
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+        </li>
       </ul>
       @endif
     </ul>

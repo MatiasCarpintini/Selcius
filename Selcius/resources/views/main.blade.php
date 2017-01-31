@@ -6,7 +6,7 @@
   
   <body>
     @include('partials._nav')    
-
+    <main>  
     <div class="container">
     
       @include('partials._messages')
@@ -15,8 +15,8 @@
       
 
     </div> <!-- end of .container --> 
-      @include('partials._footer')
-
+    </main>
+    @include('partials._footer')
     @include('partials._javascript')
 
     @yield('scripts')
