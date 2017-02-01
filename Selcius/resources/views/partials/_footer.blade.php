@@ -1,7 +1,7 @@
 
 <footer class="page-footer">
-  <div class="container">
-      <div class="row col-md-13 col-md-offset-6" align="right">
+    <div class="container">
+      <div class="row" align="center">
         <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #3b5998;"><i class="fa fa-facebook" style="color:white;"></i></a>
         <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #00aced;"><i class="fa fa-twitter" style="color:white;"></i></a>
         <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #303030;"><i class="fa fa-github" style="color:white;"></i></a>

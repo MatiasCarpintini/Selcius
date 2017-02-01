@@ -59,7 +59,6 @@
 	Route::get('contact', 'PagesController@getContacto');
 	Route::post('/', 'PagesController@postContacto');
 
-	Route::get('about-us', 'PagesController@getNotosotros');
 
 	Route::get('/', 'PagesController@getIndex');
 

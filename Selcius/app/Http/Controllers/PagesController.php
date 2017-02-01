@@ -12,11 +12,10 @@ use Selcius\Section;
 use Selcius\Comment;
 use Mail;
 use Session;
-use Selcius\Cursos;
 use Auth;
 Class PagesController extends Controller {
 
-	public function getIndex() 
+	public function getIndex()
 	{
 		$cursos = Curso::orderBy('id','desc')->paginate(1);
 		$articulos = Articulo::orderBy('created_at', 'desc')->limit(2)->get();
@@ -64,7 +63,7 @@ Class PagesController extends Controller {
 		return redirect('/');
 	}
 	public function subscription(Request $request){
- 
+
         //una clave para identificar al usuario y su medio de pago en stripe
         $token = $request->stripeToken;
         //Registro del pago haciendo uso de la api
