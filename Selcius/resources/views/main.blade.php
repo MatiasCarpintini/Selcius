@@ -3,18 +3,29 @@
   <head>
     @include('partials._head')
   </head>
-  
+
   <body>
-    @include('partials._nav')    
-    <main>  
-    <div class="container">
-    
-      @include('partials._messages')
+  <style media="screen">
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        }
 
-      @yield('content')
-      
+        main {
+        flex: 1 0 auto;
+    }
+    </style>
+    @include('partials._nav')
+    <main>
+        <div class="container">
 
-    </div> <!-- end of .container --> 
+          @include('partials._messages')
+
+          @yield('content')
+
+
+        </div> <!-- end of .container -->
     </main>
     @include('partials._footer')
     @include('partials._javascript')
