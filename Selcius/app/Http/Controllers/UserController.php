@@ -30,20 +30,8 @@ class UserController extends Controller
         return view ('articulos.index')-> withArticulos($articulos);
     }
     public function dashboard(){
-        $chart = Charts::database(User::all(), 'area', 'highcharts')
+        $chart = Charts::database(User::all(), 'area', 'morris')
         ->title('Usuarios')
-        ->Elementlabel("Total")
-        ->dimensions(1000,500)
-        ->responsive(true)
-        ->lastByDay(30);
-        $foro = Charts::database(Foro::all(), 'area', 'highcharts')
-        ->title('Foros')
-        ->Elementlabel("Total")
-        ->dimensions(1000,500)
-        ->responsive(true)
-        ->lastByDay(30);
-        $articulo = Charts::database(Articulo::all(), 'area', 'highcharts')
-        ->title('Artículos')
         ->Elementlabel("Total")
         ->dimensions(1000,500)
         ->responsive(true)
@@ -53,7 +41,7 @@ class UserController extends Controller
         $articulos = Articulo::all();
         $foros = Foro::all();
         $uploads = Upload::all();
-        return view('auth.dashboard', ['chart' => $chart], ['foro' => $foro], ['articulo' => $articulo])->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);  
+        return view('auth.dashboard', ['chart' => $chart])->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);  
     }
     public function getProfile(){
     	$articulos = Articulo::all();

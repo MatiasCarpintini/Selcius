@@ -6,8 +6,6 @@
 @else
 	@if(Auth::user()->level == 2)
 	{!! $chart->render() !!}
-	{!! $foro->render() !!}
-	{!! $articulo->render() !!}
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<div class="card">
 		<div class="card-content">
@@ -37,7 +35,7 @@
 
 						<tr>
 							<th>{{$user->id}}</th>
-							<th><img src="{{asset('avatars/'.$user->image)}}" class="circle img-circle user-image" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"></th>
+							<th><a href="{{route('auth.profiles', $user->id)}}"><img src="{{asset('avatars/'.$user->image)}}" class="circle img-circle user-image" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"></a></th>
 							<th>{{$user->name}}</th>
 							<th>{{$user->email}}</th>
 							<th>{{$user->level}}</th>
