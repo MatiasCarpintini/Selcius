@@ -151,6 +151,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
 
 
@@ -215,6 +216,7 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Redis'     => Illuminate\Support\Facades\Redis::class,
         'LRedis'    => 'Illuminate\Support\Facades\Redis',
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 
 ];

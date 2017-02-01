@@ -14,7 +14,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 <!--Charts-->
-
+{!! Charts::assets() !!}
 <script>
     window.Laravel = <?php echo json_encode([
         'csrfToken' => csrf_token(),

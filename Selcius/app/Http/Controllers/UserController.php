@@ -17,6 +17,7 @@ use Session;
 use Purifier;
 use Image;
 use Storage;
+use Charts;
 
 class UserController extends Controller
 {
@@ -29,12 +30,30 @@ class UserController extends Controller
         return view ('articulos.index')-> withArticulos($articulos);
     }
     public function dashboard(){
+        $chart = Charts::database(User::all(), 'area', 'highcharts')
+        ->title('Usuarios')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(30);
+        $foro = Charts::database(Foro::all(), 'area', 'highcharts')
+        ->title('Foros')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(30);
+        $articulo = Charts::database(Articulo::all(), 'area', 'highcharts')
+        ->title('Artículos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(30);
         $users = User::all();
         $cursos = Curso::all();
         $articulos = Articulo::all();
         $foros = Foro::all();
         $uploads = Upload::all();
-        return view('auth.dashboard')->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);  
+        return view('auth.dashboard', ['chart' => $chart], ['foro' => $foro], ['articulo' => $articulo])->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);  
     }
     public function getProfile(){
     	$articulos = Articulo::all();

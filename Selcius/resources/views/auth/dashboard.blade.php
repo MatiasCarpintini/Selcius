@@ -5,6 +5,9 @@
 
 @else
 	@if(Auth::user()->level == 2)
+	{!! $chart->render() !!}
+	{!! $foro->render() !!}
+	{!! $articulo->render() !!}
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<div class="card">
 		<div class="card-content">
