@@ -22,13 +22,13 @@
 						<th>
 							{{$section->id}}
 						</th>
-						<th><img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"></th>
+						<th><img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img"></th>
 						<td>
 							<a href="{{route('sections.show', $section->id)}}">{{$section->name}} </a>
 						</td>
 						<td><a href="{{route('sections.edit', $section->id)}}" class="btn-flat waves-effect"><i class="fa fa-pencil"></i></a></td>
 						<td>
-     
+
 						{!! Form::open(['route' => ['sections.destroy', $section->id], 'method' => 'DELETE']) !!}
 						<button type="submit" class="btn-flat waves-effect"><i class="material-icons">delete</i></button>
 						{!! Form::close()!!}
@@ -43,7 +43,7 @@
 			{!! Form::open(['route' => 'sections.store', 'method' => 'POST', 'files' => 'true'])!!}
 			<p class="text-center" style="font-size: 30px;font-family: 'Quicksand', sans-serif;"><i class="fa fa-plus"></i> Nueva sección</p>
 			<br>
-				
+
 				<div class="input-field col s6">
 				  <i class="fa fa-folder prefix"></i>
 		          <label for="name">Nombre</label>
@@ -73,7 +73,7 @@
 		<p style="font-size: 30px;font-family: 'Quicksand', sans-serif;" class="text-center"><i class="fa fa-puzzle-piece"></i> Secciones</p>
 			@foreach($sections as $section)
 				<a href="{{route('sections.show', $section->id)}}"><div style="float:center;" class="chip">
-					<img src="{{asset('images/'.$section->icono)}}" class="circle">{{$section->name}}
+					<img src="{{asset('images/'.$section->icono)}}" class="circle responsive-img">{{$section->name}}
 				</div></a>
 			@endforeach
 	</div>

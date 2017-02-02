@@ -17,6 +17,7 @@ use Image;
 use Storage;
 
 Class ArticuloController extends Controller {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -50,16 +51,20 @@ Class ArticuloController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $user_id)
+    public function store(Request $request)
     {
-        $this->validate($request, array('title' => 'required|max:255',
-        'slug' => 'required|alpha_dash|min:5|max:255|unique:articulos,slug','category_id' => 'required|integer',  'body' => 'required',
-        'featured_image' => 'sometimes|image'));
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:articulos,slug',
+            'category_id' => 'required|integer',
+            'body' => 'required',
+            'featured_image' => 'sometimes|image'
+        ]);
 
-        $articulo = new Articulo;   
-        $user = User::find($user_id);
+        $articulo = new Articulo;
+
         $articulo->title = $request->title;
-        $articulo->user()->associate($user);
+        $articulo->user_id = Auth::user()->id;
         $articulo->slug = $request->slug;
         $articulo->category_id = $request->category_id;
         $articulo->body = Purifier::clean($request->body);

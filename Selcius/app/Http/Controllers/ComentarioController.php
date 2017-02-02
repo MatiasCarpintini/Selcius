@@ -17,7 +17,7 @@ class ComentarioController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function store(Request $request, $curso_id)
     {
         $this->validate($request, [
@@ -52,12 +52,14 @@ class ComentarioController extends Controller
     public function update(Request $request, $id)
     {
         $comentario = Comentario::find($id);
+        
         $this->validate($request, [
             'comentario' => 'required'
         ]);
+
         $comentario->comentario = Purifier::clean($request->input('comentario'));
 
-            $comentario->save();
+        $comentario->save();
 
         return redirect()->route('courses.single', $comentario->curso->slug);
     }
@@ -71,9 +73,9 @@ class ComentarioController extends Controller
     public function destroy($id)
     {
         $comentario = Comentario::find($id);
-        $curso_id = $comentario->curso->id; 
+        $curso_id = $comentario->curso->id;
         $comentario->delete();
 
-        return redirect()->route('courses.single', $comentario->curso->slug);  
+        return redirect()->route('courses.single', $comentario->curso->slug);
     }
 }

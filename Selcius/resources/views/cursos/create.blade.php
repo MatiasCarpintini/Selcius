@@ -113,7 +113,6 @@
         </div>
         <br>
         <button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons right">send</i>send</button>
-        {{ Form::hidden('user_id', Auth::user()->id, ['class' => 'form-control','required' => '']) }}
 
         {!! Form::close()!!}
 </div>

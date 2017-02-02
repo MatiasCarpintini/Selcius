@@ -3,14 +3,9 @@
 namespace Selcius\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Selcius\Http\Requests;
-
 use Selcius\Tag;
-
 use Session;
-
-
 
 class TagController extends Controller
 {
@@ -104,8 +99,6 @@ class TagController extends Controller
         $tag->articulos()->detach();
 
         $tag->delete();
-
-        Session::flash('success', 'El tag fue eliminado correctamente!');
 
         return redirect()->route('tags.index');
     }

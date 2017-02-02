@@ -9,7 +9,7 @@ use Selcius\Http\Controllers\Controller;
 use Selcius\User;
 use Selcius\Upload;
 use Selcius\Message;
-use Selcius\Auth;
+use Auth;
 use Session;
 use Purifier;
 use Storage;
@@ -46,18 +46,17 @@ class MensajeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $upload_id)
-    {   
+    {
         $this->validate($request, [
-            'user_id' => 'required|integer',
             'message' => 'required'
             ]);
+
         $upload = Upload::find($upload_id);
         $message = new Message();
-        $user = User::all();
         $message->message = Purifier::Clean($request->message);
         $message->approved = true;
         $message->upload()->associate($upload);
-        $message->user_id = $request->user_id;
+        $message->user_id = Auth::user()->id;
 
         $message->save();
 
@@ -87,17 +86,6 @@ class MensajeController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

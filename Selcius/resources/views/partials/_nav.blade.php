@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="/" class="brand-logo center" style="color: #212121;"><img src="{{asset('Logo.png')}}"> Selcius</a>
+    <a href="/" class="brand-logo center" style="color: #212121;"><img class="responsive-img" src="{{asset('Logo.png')}}"> Selcius</a>
     @if(Auth::guest())
     <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li class="{{ Request::is('courses') ? "active" : "" }}"><a href="/courses"><i class="fa fa-book"></i>           Cusos</a></li>
@@ -22,7 +22,7 @@
       <a href="" class="dropdown-button" data-activates="dropdown-1">
       @endif
 
-      <p><img src="{{asset('avatars/'.Auth::user()->image)}}" class="user-image" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">
+      <p><img src="{{asset('avatars/'.Auth::user()->image)}}" class="user-image responsive-img" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">
       <span class="hidden-xs">{{Auth::user()->name}}</span></p></a></li>
         <ul id="dropdown-2" class="dropdown-content">
           <li class="{{ Request::is('courses') ? "active" : "" }}"><a href="/courses"><i class="fa fa-book"></i>           Cusos</a></li>

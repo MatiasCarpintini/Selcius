@@ -19,7 +19,7 @@ use Selcius\Section;
 class SeccionController extends Controller
 {
     public function __construct(){
-        return $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -47,7 +47,7 @@ class SeccionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'featured_icono' => 'required|sometimes|image'       
+            'featured_icono' => 'required|sometimes|image'
             ]);
         $section = new Section;
         $section->name = $request->name;
@@ -78,7 +78,7 @@ class SeccionController extends Controller
         $section = Section::find($id);
         $this->validate($request, [
             'name' => 'required',
-            'featured_icono' => 'sometimes|image' 
+            'featured_icono' => 'sometimes|image'
             ]);
 
         $section->name = $request->name;

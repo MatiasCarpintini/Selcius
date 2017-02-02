@@ -12,7 +12,7 @@
 <div class="row">
   <div class="card">
     <div class="card-image">
-      <img src="{{asset('images/'.$articulo->image)}}" class="responsive-img" width="800" height="400">
+      <img src="{{asset('images/'.$articulo->image)}}" class="responsive-img materialboxed" width="800" height="400">
     </div>
     <div class="card-content">
       <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -34,7 +34,7 @@
                         <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
                         <a href="{{route('auth.profiles', $articulo->user->id)}}">
                             <p style="font-size: 35px;font-family: 'Maven Pro', sans-serif;" class="media-heading pull-left" aling="">
-                            <img style="width: 52px;height: 52px;border-radius: 50%;margin-left:10px;" class="z-depth-4" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$articulo->user->name}}</p></a>
+                            <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;margin-left:10px;" class="z-depth-4" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$articulo->user->name}}</p></a>
 
                     </div>
                     <p style="margin-top:20px;margin-left: 70px;">{!!$articulo->user->description!!}</p>
@@ -61,7 +61,7 @@
                     <div class="clearfix">
                         <a href="{{route('auth.profiles', $comment->user->id)}}">
                             <p style="font-size: 40px;" class="media-heading pull-left">
-                                <img style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$comment->user->name}}
+                                <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$comment->user->name}}
                             </p>
                         </a>
                     </div>
@@ -107,9 +107,8 @@
             <div class="media-body">
               <form action="{{route('comments.store', $articulo->id)}}" method="POST">
               {{csrf_field()}}
-              <p><img src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-left: 20px;">{{Auth::user()->name}}</p>
+              <p><img class="responsive-img" src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-left: 20px;">{{Auth::user()->name}}</p>
                 <textarea class="materialize-textarea" style="margin-left: 20px;" name="comment" cols="40" rows="10"></textarea>
-                <input name="user_id" value="{{Auth::user()->id}}" hidden></input>
                 <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
               </form>
             </div>

@@ -20,8 +20,6 @@
 	Route::get('/profiles/{id}', ['uses' => 'UserController@getProfiles', 'as' => 'auth.profiles']);
 
 	Route::resource('foros', 'ForoController');
-
-
 	Route::resource('categories', 'CategoryContoller', ['except' => ['create']]);
 
 	Route::resource('sections', 'SeccionController');
@@ -62,8 +60,7 @@
 
 	Route::get('/', 'PagesController@getIndex');
 
-	Route::resource('articulos','ArticuloController', ['except' => ['store']]);
-	Route::post('articulos/{user_id}', ['uses' => 'ArticuloController@store', 'as' => 'articulos.store']);
+	Route::resource('articulos','ArticuloController');
 
 	Route::post('comments/{articulo_id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
 	Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as' => 'comments.edit']);

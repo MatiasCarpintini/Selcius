@@ -8,16 +8,12 @@
 		<div class="col-md-4">
 			<a href="{{route('articulo.single', $articulo->slug)}}"><div class="card hoverable">
 				<div class="card-image">
-					<img src="{{asset('images/'.$articulo->image)}}">
+					<img class="responsive-img" src="{{asset('images/'.$articulo->image)}}">
 					<span class="card-title"><p>{{$articulo->title}}</p></span>
 				</div>
 				<div class="card-content">
-					<p style="color: black;">{{substr(strip_tags($articulo->body), 0, 150)}}{{strlen(strip_tags($articulo->body)) > 150 ? '...' : ""}}</p>
+					<p><img class="responsive-img" src="{{asset('avatars/'.$articulo->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"> By <a href="{{'auth.profiles', $articulo->user->id}}"> {!!$articulo->user->name!!} </a></p>
 				</div>
-				<li class="divider"></li>
-				<br>
-				<a href="{{route('auth.profiles', $articulo->user->id)}}"><p><img src="{{asset('avatars/'.$articulo->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;margin-left: 20px;"> By {{$articulo->user->name}}</p></a>
-				<br>
 			</div></a>
 		</div>
 	</article>
@@ -32,4 +28,3 @@
 </div>
 
 @endsection
-

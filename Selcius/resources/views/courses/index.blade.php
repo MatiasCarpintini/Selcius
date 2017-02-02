@@ -11,11 +11,11 @@
   @foreach($cursos as $curso)
       <div class="col-md-6">
         <div class="card">
-          <div class="card-image waves-effect waves-block waves-light embed-responsive embed-responsive-16by9">
+          <div class="card-image waves-effect waves-block waves-light responsive-video embed-responsive embed-responsive-16by9">
             <iframe width="560" height="315"  align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" frameborder="0"></iframe>
           </div>
           <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><p><a href="{{route('courses.single', $curso->slug)}}"><p style="font-family: 'Varela Round', sans-serif;font-size: 30px;"><img src="{{asset('images/'.$curso->icono)}}" class="circle"> {!!$curso->title!!}
+          <span class="card-title activator grey-text text-darken-4"><p><a href="{{route('courses.single', $curso->slug)}}"><p style="font-family: 'Varela Round', sans-serif;font-size: 30px;"><img src="{{asset('images/'.$curso->icono)}}" class="circle responsive-img"> {!!$curso->title!!}
               @if($curso->level == 1)
               <label class="badge red" style="margin-top: 7px;">PREMIUM</label>
               @else
@@ -24,7 +24,7 @@
             </a><i class="material-icons right">more_vert</i></p></span>
           </div>
           <div class="card-reveal">
-            <span class="card-title activator grey-text text-darken-4"><p><a href="{{route('courses.single', $curso->slug)}}"><p style="font-family: 'Varela Round', sans-serif;font-size: 30px;"><img src="{{asset('images/'.$curso->icono)}}" class="circle"> {!!$curso->title!!}
+            <span class="card-title activator grey-text text-darken-4"><p><a href="{{route('courses.single', $curso->slug)}}"><p style="font-family: 'Varela Round', sans-serif;font-size: 30px;"><img src="{{asset('images/'.$curso->icono)}}" class="circle responsive-img"> {!!$curso->title!!}
               @if($curso->level == 1)
               <label class="badge red" style="margin-top: 7px;">PREMIUM</label>
               @else

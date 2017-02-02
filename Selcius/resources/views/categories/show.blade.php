@@ -18,7 +18,7 @@
             <div class="col-md-4">
                 <a href="{{route('articulo.single', $articulo->slug)}}"><div class="card hoverable">
                     <div class="card-image">
-                        <img src="{{asset('images/'.$articulo->image)}}">
+                        <img class="responsive-img" src="{{asset('images/'.$articulo->image)}}">
                         <span class="card-title"><p>{{$articulo->title}}</p></span>
                     </div>
                     <div class="card-content">

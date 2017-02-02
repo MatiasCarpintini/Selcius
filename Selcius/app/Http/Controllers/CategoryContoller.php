@@ -13,7 +13,7 @@ class CategoryContoller extends Controller
 
     public function __construct()
     {
-        $this ->middleware ('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,7 +25,7 @@ class CategoryContoller extends Controller
     {
         $categories = Category::all();
 
-        return view('categories.index')->withCategories($categories); 
+        return view('categories.index')->withCategories($categories);
     }
 
 
@@ -44,8 +44,6 @@ class CategoryContoller extends Controller
         $category->name = $request->name;
 
         $category->save();
-
-        Session::flash('success', 'La categoría fue creada exitosamente!');
 
         return redirect()->route('categories.index');
     }
@@ -84,8 +82,6 @@ class CategoryContoller extends Controller
         $category->name = $request->input('name');
 
         $category->save();
-
-        Session::flash('success', 'Categoria Actualizada Exitosamente!');
 
         return redirect()->route('categories.index');
     }

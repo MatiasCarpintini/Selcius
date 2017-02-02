@@ -13,6 +13,9 @@ use Purifier;
 
 class AnswerController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -28,7 +31,7 @@ class AnswerController extends Controller
         $foro = Foro::find($foro_id);
         $answer->approved = true;
         $answer->foro()->associate($foro);
-        $answer->user_id = $request->user_id;
+        $answer->user_id = Auth::user()->id;
         $answer->answer = Purifier::clean($request->answer);
 
         $answer->save();

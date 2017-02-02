@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-13">
     <section align="left">
-      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" frameborder="0"></iframe>
+      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" frameborder="0" class="responsive-video"></iframe>
     </section>
     <div class="col-md-4">
       <div class="card">
@@ -22,8 +22,8 @@
 
         </div>
         <div class="card-content">
-          <p><img src="{{asset('avatars/'.$curso->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"> By <a href="{{route('auth.profiles', $curso->user->id)}}"> {{$curso->user->name}}</a></p>
-          <img style="margin-left: 20px;" class="activator" src="/img/video-camera.png">
+          <p><img src="{{asset('avatars/'.$curso->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img"> By <a href="{{route('auth.profiles', $curso->user->id)}}"> {{$curso->user->name}}</a></p>
+          <img style="margin-left: 20px;" class="activator responsive-img" src="/img/video-camera.png">
           <p style="margin-top: 20px;"><span class="card-title activator grey-text text-darken-4">Contenido<i class="material-icons right">more_vert</i></span></p>
         </div>
         <div class="card-reveal">
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-    <p style="font-family: 'Fredoka One', cursive;font-size:40px;" class="text-center"><img style="margin-right: 10px;" src="{{asset('images/'.$curso->icono)}}" class="circle">{{ $curso->title }}</p>
+    <p style="font-family: 'Fredoka One', cursive;font-size:40px;" class="text-center"><img style="margin-right: 10px;" src="{{asset('images/'.$curso->icono)}}" class="circle responsive-img">{{ $curso->title }}</p>
     <p>{!!$curso->description!!}</p>
     <li class="divider"></li>
     <br>
@@ -58,7 +58,7 @@
                 <div class="media-body">
                     <div class="clearfix">
                         <a href="{{route('auth.profiles', $comentario->user->id)}}"><p style="font-size: 40px;" class="media-heading">
-                        <img class="img-circle" style="width: 52px;height: 52px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$comentario->user->image)}}">
+                        <img class="img-circle responsive-img" style="width: 52px;height: 52px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$comentario->user->image)}}">
                         {{$comentario->user->name}}
                         </p></a>
                     </div>
@@ -102,9 +102,8 @@
             <div class="media-body">
               <form action="{{route('comentarios.store', $curso->id)}}" method="POST" id="comment-save">
               {{csrf_field()}}
-              <p><img src="{{asset('avatars/'.Auth::user()->image)}}" style="margin-left:20px;width: 52px;height: 52px;border-radius: 50%;margin-right: 10px;" class="circle">{{Auth::user()->name}}</p>
+              <p><img src="{{asset('avatars/'.Auth::user()->image)}}" style="margin-left:20px;width: 52px;height: 52px;border-radius: 50%;margin-right: 10px;" class="circle responsive-img">{{Auth::user()->name}}</p>
                 <textarea class="materialize-textarea" style="margin-left: 20px;" name="comentario" cols="40" rows="10"></textarea>
-                <input name="user_id" value="{{Auth::user()->id}}" hidden></input>
                 <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
               </form>
             </div>

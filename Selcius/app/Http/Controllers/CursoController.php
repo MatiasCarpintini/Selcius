@@ -19,6 +19,7 @@ use Purifier;
 use Image;
 use Storage;
 use Input;
+
 class CursoController extends Controller
 {
     public function __construct()
@@ -66,15 +67,12 @@ class CursoController extends Controller
                 'featured_image' => 'required|sometimes|image',
                 'video' => 'required|min:5',
                 'level' => 'required|integer',
-                'user_id' => 'required|integer',
                 'section_id' => 'required|integer'
             ]);
             $curso = new Curso;
             $curso->title = $request->title;
             $curso->slug = $request->slug;
             $curso->description = Purifier::clean($request->description);
-
-
             $image = Input::file('featured_image');
             $filename = time(   ) . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename);
@@ -91,7 +89,7 @@ class CursoController extends Controller
 
 
             $curso->video = $request->video;
-            $curso->user_id = $request->user_id;
+            $curso->user_id = Auth::user()->id;
             $curso->level = $request->level;
             $curso->section_id = $request->section_id;
 

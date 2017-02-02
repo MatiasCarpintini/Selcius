@@ -68,8 +68,8 @@
 @if(Auth::user()->level == 2)
 <div class="row">
 	<div class="col-md-13">
-    {!!Form::open(['route' => ['articulos.store', Auth::user()->id], 'method' => 'POST', 'files' => 'true', 'data-parsley-validate' => ""])!!}
-    
+    {!!Form::open(['route' => 'articulos.store', 'method' => 'POST', 'files' => 'true', 'data-parsley-validate' => ""])!!}
+
         <div class="input-field">
             <input type="text" name="title" required id="title">
             <label for="title">Título</label>
@@ -100,10 +100,10 @@
             <div class="file-path-wrapper">
                 <input class="file-path validate">
             </div>
-        </div>    
+        </div>
         <textarea id="textarea" name="body" required></textarea>
-        <br>    
-        
+        <br>
+
         <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>send</button>
 
         {!!Form::close()!!}

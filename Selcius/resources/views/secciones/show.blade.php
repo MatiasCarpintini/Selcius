@@ -9,7 +9,7 @@
 
 @else
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-<p class="text-center" style="font-size: 30px; font-family: 'Quicksand', sans-serif;"> Todos los cursos que se encuentran en la sección: <img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"> {{$section->name}} ({{$section->cursos->count()}})</p>
+<p class="text-center" style="font-size: 30px; font-family: 'Quicksand', sans-serif;"> Todos los cursos que se encuentran en la sección: <img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="circle responsive-img"> {{$section->name}} ({{$section->cursos->count()}})</p>
 <br>
 <div class="row">
 	@foreach($cursos as $curso)

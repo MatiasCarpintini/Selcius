@@ -60,7 +60,7 @@
     </script>
 <div class="row">
     {!! Form::open(array('route' => 'foros.store','data-parsley-validate' => '','method' => "POST")) !!}
-        
+
         <div class="input-field">
             <input type="text" id="title" name="title" required>
             <label for="title">Título</label>
@@ -72,7 +72,6 @@
         <div class="input-field">
             <textarea name="body" id="body" cols="30" rows="10"></textarea>
         </div>
-        <input hidden name="user_id" value="{{Auth::user()->id}}" required>
         <br>
         <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>send</button>
 	{!! Form::close() !!}

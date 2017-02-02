@@ -15,7 +15,7 @@
         <br>
         <p>{!!$foro->body!!}</p>
         <hr style="color: #0099CC;">
-        <p style=""><a href="{{route('auth.profiles', $foro->user->id)}}"><img src="{{asset('avatars/'.$foro->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"> {{$foro->user->name}} </a> <b style="font-family: 'Quicksand', sans-serif;float: right;margin-top: 7px;"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($foro->created_at))}}</b>
+        <p style=""><a href="{{route('auth.profiles', $foro->user->id)}}"><img src="{{asset('avatars/'.$foro->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img"> {{$foro->user->name}} </a> <b style="font-family: 'Quicksand', sans-serif;float: right;margin-top: 7px;"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($foro->created_at))}}</b>
         </p>
       </div>
     </div>
@@ -38,7 +38,7 @@
               <div class="media">
                   <div class="media-body">
                       <div class="clearfix">
-                          <a href="{{route('auth.profiles', $answer->user->id)}}"><p style="font-size: 40px;" class="media-heading pull-left"><img style="width:52px;height: 52px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$answer->user->image)}}">{{$answer->user->name}}
+                          <a href="{{route('auth.profiles', $answer->user->id)}}"><p style="font-size: 40px;" class="media-heading pull-left"><img style="width:52px;height: 52px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$answer->user->image)}}" class="responsive-img">{{$answer->user->name}}
                           </p></a>
                       </div>
                       <p>{{$answer->answer}}</p>
@@ -84,9 +84,8 @@
               <div class="media-body">
                 <form action="{{route('answers.store', $foro->id)}}" method="POST" id="comment-save">
                 {{csrf_field()}}
-                <p> <img src="{{asset('avatars/'.Auth::user()->image)}}" style="width:42px;height: 42px;border-radius: 50%;margin-right: 10px;margin-left: 20px;" class="circle"> {{Auth::user()->name}}</p>
+                <p> <img src="{{asset('avatars/'.Auth::user()->image)}}" style="width:42px;height: 42px;border-radius: 50%;margin-right: 10px;margin-left: 20px;" class="circle responsive-img"> {{Auth::user()->name}}</p>
                   <textarea class="materialize-textarea" style="margin-left:20px;" name="answer" cols="40" rows="10"></textarea>
-                  <input name="user_id" value="{{Auth::user()->id}}" hidden></input>
                   <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
                 </form>
               </div>

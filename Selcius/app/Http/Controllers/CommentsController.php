@@ -55,7 +55,7 @@ class CommentsController extends Controller
         $comment->comment = Purifier::clean($request->comment);
         $comment->approved = true;
         $comment->articulo()->associate($articulo);
-        $comment->user_id = $request->user_id;
+        $comment->user_id = Auth::user()->id;
 
         $comment->save();
 
@@ -81,9 +81,8 @@ class CommentsController extends Controller
         $this->validate($request, array('comment' => 'required'));
 
         $comment->comment = Purifier::clean($request->input('comment'));
-        $comment->save();
 
-        Session::flash('success', 'Comentario Actualizado!');
+        $comment->save();
 
         return redirect()->route('articulo.single', $comment->articulo->slug);
     }

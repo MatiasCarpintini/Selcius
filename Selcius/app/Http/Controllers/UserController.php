@@ -41,7 +41,7 @@ class UserController extends Controller
         $articulos = Articulo::all();
         $foros = Foro::all();
         $uploads = Upload::all();
-        return view('auth.dashboard', ['chart' => $chart])->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);  
+        return view('auth.dashboard', ['chart' => $chart])->withUsers($users)->withCursos($cursos)->withArticulos($articulos)->withForos($foros)->withUploads($uploads);
     }
     public function getProfile(){
     	$articulos = Articulo::all();
@@ -89,11 +89,9 @@ class UserController extends Controller
 
         $user->save();
 
-        Session::flash('success', 'Perfil Actualizado!');
-
         return redirect()->route('auth.profile');
     }
-    
+
     public function uplevel(Request $request, $id){
         $user = User::find($id);
     }
@@ -106,7 +104,6 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
         Storage::delete($user->image);
-        Session::flash('success', 'Usario eliminado satisfactoriamente!');
         return redirect()->route('auth.dashboard');
     }
 }

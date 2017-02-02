@@ -16,7 +16,7 @@ use Purifier;
 class ForoController extends Controller
 {
     public function __construct(){
-        return $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -49,13 +49,12 @@ class ForoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'user_id' => 'required|integer',
             'title' => 'required|min:5',
             'slug' => 'required|max:44',
             'body' => 'required|min:5'
         ]);
         $foro = new Foro;
-        $foro->user_id = $request->user_id;
+        $foro->user_id = Auth::user()->id;
         $foro->title = Purifier::clean($request->title);
         $foro->slug = Purifier::clean($request->slug);
         $foro->body = Purifier::clean($request->body);

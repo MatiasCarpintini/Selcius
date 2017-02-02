@@ -10,7 +10,7 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="box box-info">
             <div class="box-header with-border">
-            <p align="right"><img src="{{asset('avatars/'.$comment->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">By {{$comment->user->name}}</p>
+            <p align="right"><img src="{{asset('avatars/'.$comment->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img">By <a href="{{'auth.profiles', $comment->user->id}}">{{$comment->user->name}}</a></p>
                 <p style="font-size: 16px;font-family: 'Comfortaa', cursive;">Editar Comentario</p>
             </div>
             <div class="box-body">
@@ -33,7 +33,7 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="box box-info">
             <div class="box-header with-border">
-                <p align="right"><img src="{{asset('avatars/'.$comment->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">By {{$comment->user->name}}</p>
+                <p align="right"><img class="responsive-img" src="{{asset('avatars/'.$comment->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">By {{$comment->user->name}}</p>
                 <p style="font-size: 16px;font-family: 'Comfortaa', cursive;">Editar Comentario</p>
             </div>
             <div class="box-body">
@@ -50,8 +50,4 @@
 </div>
 @endif
 </div>
-<br><br><br><br>
-<br><br><br><br>
-<br><br><br><br>
-<br><br>
 @endsection

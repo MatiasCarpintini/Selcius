@@ -1,13 +1,13 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($articulo->title); ?>
-@section('title', "| $titleTag") 
+@section('title', "| $titleTag")
 @section('content')
 @if(Auth::guest())
 @else
 @if(Auth::user()->level == 2)
 <div class="row">
 	<div class="col-md-8">
-		<img class="materialboxed" src="{{asset('images/'.$articulo->image)}}">
+		<img class="materialboxed responsive-img" src="{{asset('images/'.$articulo->image)}}">
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<p style="font-size: 35px;font-family: 'Ubuntu', sans-serif;">{{ $articulo->title }}</p>
 		<p class="lead">{!! $articulo->body !!}}</p>
@@ -15,7 +15,7 @@
 		<div class="tags">
 			@foreach($articulo->tags as $tag)
 
-			<span class="label label-default"> 
+			<span class="label label-default">
 				{{ $tag->name }}
 			</span>
 
@@ -56,7 +56,7 @@
 	<div class="col-md-4">
 		<div class="well">
 			<dl class="dl-horizontal">
-				<a href="{{route('auth.profiles', $articulo->user->id)}}"><p class="text-center"><img src="{{asset('avatars/'.$articulo->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">{{$articulo->user->name}}</p></a>
+				<a href="{{route('auth.profiles', $articulo->user->id)}}"><p class="text-center"><img src="{{asset('avatars/'.$articulo->user->image)}}" class="responsive-img" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">{{$articulo->user->name}}</p></a>
 			</dl>
 			<dl class="dl-horizontal">
 				<p><i class="fa fa-unlink"></i> Slug: <a href="{{ route('articulo.single', $articulo->slug) }}">{{route('articulo.single', $articulo->slug)}}</a></p>

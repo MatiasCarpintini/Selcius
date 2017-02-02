@@ -21,11 +21,11 @@
 						<td>{{ $articulo->id }}</td>
 						<td>{{ $articulo->title }}</td>
 						<td>{{date('M j, Y h:ia', strtotime( $articulo->created_at))}}</td>
-						<td>{{$articulo->user->name}}</td>
+						<td><a href="{{'auth.profiles', $articulo->user->id}}">{{$articulo->user->name}}</a></td>
 						<td><a href="{{ route('articulos.show', $articulo->id) }}" style="margin-right: 10px;"><i class="fa fa-arrow-right"></i></a>
 						@if(Auth::user()->id != $articulo->user_id)
-							
-						@else	
+
+						@else
 						<a href="{{ route('articulos.edit', $articulo->id)}}"><i class="fa fa-pencil"></i></a></td>
 						@endif
 					</tr>

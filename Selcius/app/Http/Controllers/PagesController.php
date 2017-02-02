@@ -13,6 +13,7 @@ use Selcius\Comment;
 use Mail;
 use Session;
 use Auth;
+
 Class PagesController extends Controller {
 
 	public function getIndex()
@@ -20,21 +21,7 @@ Class PagesController extends Controller {
 		$cursos = Curso::orderBy('id','desc')->paginate(1);
 		$articulos = Articulo::orderBy('created_at', 'desc')->limit(2)->get();
 		$sections = Section::orderBy('id', 'desc')->paginate(1);
-		$comments = Comment::all();
-		return view ('pages/welcome')->withArticulos($articulos)->withCursos($cursos)->withSections($sections)->withComments($comments);
-	}
-	public function getNotosotros()
-	{
-		$first = 'Matias';
-		$last = 'Carpintini';
-		$fullname = $first . " " . $last;
-
-		$email = 'matiascarpintini@outlook.com';
-		$data = [];
-		$data['email'] = $email;
-		$data['fullname'] = $fullname;
-
-		return view ('pages/nosotros')->withData($data);
+		return view ('pages/welcome')->withArticulos($articulos)->withCursos($cursos)->withSections($sections);
 	}
 	public function getContacto()
 	{
@@ -57,8 +44,6 @@ Class PagesController extends Controller {
 			$message->to('matiascarpintini@selcius.com');
 			$message->subject($data['subject']);
 		});
-
-		Session::flash('success', 'Your Email was Sent!');
 
 		return redirect('/');
 	}

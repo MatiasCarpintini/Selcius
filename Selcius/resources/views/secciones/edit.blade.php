@@ -9,7 +9,7 @@
 	{!! Form::model($section, ['route' => ['sections.update', $section->id], 'data-parsley-validate' => '','method' => 'PUT', 'files' => 'true'])!!}
 	<div class="col-md-8 col-md-offset-2">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-		<p style="font-family: 'Quicksand', sans-serif;font-size: 30px;" class="text-center">Editar sección: <img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;"> {{$section->name}}</p>
+		<p style="font-family: 'Quicksand', sans-serif;font-size: 30px;" class="text-center">Editar sección: <img src="{{asset('images/'.$section->icono)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img"> {{$section->name}}</p>
 		<br>
 		<div class="input-field col s6">
 			<i class="fa fa-folder prefix"></i>
