@@ -3,6 +3,8 @@
 @section('content')
 @if(Auth::user()->level == 2)
 <p class="flow-text text-center" style="font-size: 40px;">Artículos <a href="{{ route('articulos.create') }}" class="btn-floating btn-large waves-effect waves-light red" style="float:right;"><i class="material-icons">add</i></a></p>
+{!!$chart->render()!!}
+{!!$donut->render()!!}
 <div class="row">
 	<div class="col-md-13">
 		<table class="striped">

@@ -14,6 +14,8 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <div class="row">
 <p class="text-center flow-text" style="font-size: 40px;">Cursos <a align="right" style="float: right;" class="btn-floating btn-large waves-effect waves-light red" href="{{route('cursos.create')}}"><i class="material-icons">add</i></a></p>
+{!!$chart->render()!!}
+{!!$donut->render()!!}
 <li class="divider"></li>
 <br>
   @foreach($cursos as $curso)

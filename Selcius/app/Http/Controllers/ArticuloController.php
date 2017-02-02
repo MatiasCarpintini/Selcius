@@ -15,6 +15,7 @@ use Session;
 use Purifier;
 use Image;
 use Storage;
+use Charts;
 
 Class ArticuloController extends Controller {
 
@@ -29,8 +30,20 @@ Class ArticuloController extends Controller {
      */
     public function index()
     {
+        $chart = Charts::database(Articulo::all(), 'area', 'morris')
+        ->title('Artículos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
+        $donut = Charts::database(Articulo::all(), 'donut', 'morris')
+        ->title('Artículos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
         $articulos = Articulo::orderBy('id', 'desc')->paginate();
-        return view ('articulos.index')-> withArticulos($articulos);
+        return view ('articulos.index', ['chart' => $chart, 'donut' => $donut])-> withArticulos($articulos);
     }
 
     /**

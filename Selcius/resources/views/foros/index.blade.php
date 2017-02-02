@@ -6,6 +6,10 @@
 
 @else
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+@if(Auth::user()->level == 2)
+    {!!$chart->render()!!}
+    {!!$donut->render()!!}
+@endif
 <div class="row">
   @foreach($foros as $foro)
     <div class="card">

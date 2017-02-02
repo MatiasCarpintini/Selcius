@@ -19,6 +19,7 @@ use Purifier;
 use Image;
 use Storage;
 use Input;
+use Charts;
 
 class CursoController extends Controller
 {
@@ -34,10 +35,22 @@ class CursoController extends Controller
      */
     public function index()
     {
+        $chart = Charts::database(Curso::all(), 'area', 'morris')
+        ->title('Cursos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
+        $donut = Charts::database(Curso::all(), 'donut', 'morris')
+        ->title('Cursos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
         $cursos = Curso::orderBy('id', 'desc')->paginate(10);
         $likes = Like::all();
         $sections = Section::all();
-        return view('cursos.index')->withCursos($cursos)->withLikes($likes)->withSections($sections);
+        return view('cursos.index', ['chart' => $chart, 'donut' => $donut])->withCursos($cursos)->withLikes($likes)->withSections($sections);
     }
 
     /**

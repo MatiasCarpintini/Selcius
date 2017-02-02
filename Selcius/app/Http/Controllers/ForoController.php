@@ -12,6 +12,7 @@ use Selcius\User;
 use Selcius\Auth;
 use Session;
 use Purifier;
+use Charts;
 
 class ForoController extends Controller
 {
@@ -25,9 +26,21 @@ class ForoController extends Controller
      */
     public function index()
     {
+        $chart = Charts::database(Foro::all(), 'area', 'morris')
+        ->title('Artículos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
+        $donut = Charts::database(Foro::all(), 'donut', 'morris')
+        ->title('Artículos')
+        ->Elementlabel("Total")
+        ->dimensions(1000,500)
+        ->responsive(true)
+        ->lastByDay(14);
         $users = User::all();
         $foros = Foro::orderBy('id', 'desc')->paginate(20);
-        return view('foros.index')->withForos($foros)->withUsers($users);
+        return view('foros.index', ['chart' => $chart, 'donut' => $donut])->withForos($foros)->withUsers($users);
     }
 
     /**
