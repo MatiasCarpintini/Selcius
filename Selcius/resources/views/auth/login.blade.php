@@ -57,13 +57,13 @@ body {
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">lock_outline</i>
-            <input required type="password" placeholder="Password" name="password">
+            <input required type="password" placeholder="Contraseña" name="password">
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12 m12 l12  login-text">
               <input name="remember" type="checkbox" id="remember-me">
-              <label for="remember-me">Remember me</label>
+              <label for="remember-me">Recordar</label>
           </div>
         </div>
         <div class="row">
@@ -73,10 +73,10 @@ body {
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="{{url('/register')}}">Register Now!</a></p>
+            <p class="margin medium-small"><a href="{{url('/register')}}">Registrate ahora!</a></p>
           </div>
           <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small"><a href="{{ url('password/reset') }}">Forgot password?</a></p>
+              <p class="margin right-align medium-small"><a href="{{ url('password/reset') }}">Olvidaste tu contraseña?</a></p>
           </div>
         </div>
       </form>

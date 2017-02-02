@@ -1,7 +1,7 @@
 @if (Session::has('success'))
-	
+
 	<div class="alert alert-success" role="alert">
-		<strong>Exito:</strong> {{ Session::get('success') }}
+		<p><i class="fa fa-check"></i> Exito: {{ Session::get('success') }}</p>
 	</div>
 
 @endif
@@ -9,12 +9,11 @@
 @if (count($errors) > 0)
 
 	<div class="alert alert-danger" role="alert">
-		<strong>Error:</strong>
-		<ul>
+		<p><i class="fa fa-times"></i> Error:
 		@foreach ($errors->all() as $error)
-			<li>{{ $error }}</li>
-		@endforeach  
-		</ul>
+			{{ $error }}
+		@endforeach
+		</p>
 	</div>
 
 @endif

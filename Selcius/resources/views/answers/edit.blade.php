@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 @extends('main')
-@section('title', '| Edición de Comentarios')
+@section('title', '| Editar cometario')
 @section('content')
 <div class="row">
 @if(Auth::user()->id != $answer->user_id)
@@ -15,9 +15,9 @@
             </div>
             <div class="box-body">
                 {!!Form::model($answer, ['route' => ['answers.update', $answer->id], 'method' => 'PUT'])!!}
-                    {{Form::textarea('answer', null,['class' => 'materialize-textarea', 'rows' => '10', 'required'])}}
+                    {{Form::textarea('answer', null, ['class' => 'materialize-textarea', 'rows' => '10', 'required'])}}
                     <br>
-                    <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
                         <i class="material-icons right">send</i>
                     </button>
                 {!!Form::open()!!}

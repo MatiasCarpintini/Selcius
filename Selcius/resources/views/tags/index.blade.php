@@ -43,7 +43,7 @@
 				<input type="text" name="name" id="name">
 			</div>
 			<br>
-			<button class="btn waves-effect waves-light submit blue" type="submit" name="action">send
+			<button class="btn waves-effect waves-light submit blue" type="submit" name="action">enviar
 				<i class="material-icons right">send</i>
 			</button>
 		</section>
@@ -64,7 +64,7 @@
 	</div>
 </div>
 @endif
-<script>					
+<script>
 var url = '{{url('tags.store')}}';
 </script>
 @endsection

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Selcius | Edit profile</title>
+<title>Selcius | Editar mi perfil</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
@@ -81,7 +81,7 @@ body {
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <button class="btn waves-effect waves-light col s12" type="submit">Send</button>
+            <button class="btn waves-effect waves-light col s12" type="submit">send</button>
           </div>
         </div>
       {!!Form::close()!!}

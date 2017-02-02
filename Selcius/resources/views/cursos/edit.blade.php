@@ -1,7 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($curso->title); ?>
 
-@section('title', "| $titleTag Editar Curso") 
+@section('title', "| $titleTag")
 
 @section('stylesheets')
 
@@ -69,11 +69,14 @@
 
 @section('content')
 @if(Auth::user()->id != $curso->user_id)
-<h1 class="text-center">Acceso Denegado!</h1>
-@else 
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+	<p class="text-center"><i class="fa fa-book fa-5x"></i></p>
+	<p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Editar curso</p>
+	<p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Solo administradores</p>
+@else
 <div class="row">
 	<div class="col-md-8">
-	{!! Form::model($curso, ['route' => ['cursos.update', $curso->id], 'data-parsley-validate' => '','method' => 'PUT', 'files' => 'true']) !!}	
+	{!! Form::model($curso, ['route' => ['cursos.update', $curso->id], 'data-parsley-validate' => '','method' => 'PUT', 'files' => 'true']) !!}
 		<input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 		<div class="input-field">
 			{{Form::text('title', null, ['id' => 'title'])}}
@@ -81,11 +84,11 @@
 		</div>
 		<div class="input-field">
 			{{Form::text('slug', null, ['id' => 'slug'])}}
-			<label for="slug">Slug</label> 
+			<label for="slug">Slug</label>
 		</div>
 		<div class="input-field">
 			{{Form::text('level', null, ['id' => 'level'])}}
-            <label for="level">Level User</label>
+            <label for="level">Nivel de usuario</label>
         </div>
 		<div class="input-field">
 			{{Form::textarea('description', null)}}
@@ -108,8 +111,8 @@
 				<input class="file-path validate" type="text">
 			</div>
 		</div>
-		<div class="input-field">	
-			{{Form::text('video', null, ['id' => 'video'])}}		
+		<div class="input-field">
+			{{Form::text('video', null, ['id' => 'video'])}}
 			<label for="video">URL Video presentación</label>
 		</div>
 		</div>
@@ -127,7 +130,7 @@
 				<li class="divider"></li><br>
 				<div class="row text-center" align="center">
 					<a style="float:center; margin-right: 10px;" href="{{route('cursos.show', $curso->id)}}" class="waves-effect waves-light btn blue"><i class="fa fa-arrow-right right"></i> cancelar</a>
-					<button type="submit" class="btn waves-effect waves-light green"><i class="fa fa-refresh right"></i> actualizar</button>
+					<button type="submit" class="btn waves-effect waves-light green"><i class="fa fa-refresh right"></i> enviar</button>
 				</div>
 				{!! Form::close() !!}
 			</div>

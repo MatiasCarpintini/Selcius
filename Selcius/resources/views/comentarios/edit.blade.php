@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 @extends('main')
-@section('title', '| Edición de Comentarios')
+@section('title', '| Editar comentario')
 @section('content')
 <div class="row">
 @if(Auth::user()->id != $comentario->user_id)
@@ -17,7 +17,7 @@
                 {!!Form::model($comentario, ['route' => ['comentarios.update', $comentario->id], 'method' => 'PUT'])!!}
                     {{Form::textarea('comentario', null,['class' => 'materialize-textarea', 'rows' => '10', 'required'])}}
                     <br>
-                    <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
                         <i class="material-icons right">send</i>
                     </button>
                 {!!Form::open()!!}
@@ -40,7 +40,7 @@
                 {!!Form::model($comentario, ['route' => ['comentarios.update', $comentario->id], 'method' => 'PUT'])!!}
                     {{Form::textarea('comentario', null, ['class' => 'form-control', 'rows' => '10', 'required'])}}
                     <br>
-                    <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+                    <button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
                         <i class="material-icons right">send</i>
                     </button>
                 {!!Form::open()!!}

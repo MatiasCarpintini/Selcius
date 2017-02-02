@@ -94,10 +94,10 @@
             </div>
             <div class="media-body">
               <textarea class="materialize-textarea" disabled style="margin-top: 10px;" cols="40" rows="10"></textarea>
-              <a disabled style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue" onclick="Materialize.toast('Para participar de los comentarios debes Iniciar Sesión/Registrarte.', 4000)"><i class="material-icons left">send</i>submit</a>
+              <a disabled style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue" onclick="Materialize.toast('Para participar de los comentarios debes Iniciar Sesión/Registrarte.', 4000)"><i class="material-icons left">send</i>enviar</a>
             </div>
             <div class="media" align="center">
-              <p style="font-family: 'Baloo Thambi', cursive;font-size: 35px;"><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> inicia sesión </a> / <a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> registrate </a></p>
+              <p style="font-family: 'Baloo Thambi', cursive;font-size: 35px;"><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> login </a> / <a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> register </a></p>
             </div>
           </div>
             @else
@@ -107,7 +107,7 @@
               <form action="{{route('comentarios.store', $curso->id)}}" method="POST" id="comment-save">
               {{csrf_field()}}
                 <textarea class="materialize-textarea" style="margin-top: 35px;" name="comentario" cols="40" rows="10"></textarea>
-                <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
+                <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>enviar</button>
               </form>
             </div>
           </div>

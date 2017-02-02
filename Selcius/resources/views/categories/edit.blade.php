@@ -1,7 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($category->name); ?>
 
-@section('title', "| Category Edit $titleTag")
+@section('title', "| Categoría $titleTag")
 
 @section('content')
 @if(Auth::user()->level == 2)
@@ -17,7 +17,7 @@
 			<input type="text" id="name1" name="name">
 		</div>
 		<br>
-		<button class="btn waves-effect waves-light blue" type="submit" name="action">send
+		<button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
 			<i class="material-icons right">send</i>
 		</button>
 		<br>

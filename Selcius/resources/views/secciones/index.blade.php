@@ -60,7 +60,7 @@
 				</div>
 				<br>
 				<br>
-				<button class="btn waves-effect waves-light blue" type="submit" name="action">send
+				<button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
     				<i class="material-icons right">send</i>
   				</button>
 			</div>

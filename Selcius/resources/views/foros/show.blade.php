@@ -73,10 +73,10 @@
               </div>
               <div class="media-body">
                 <textarea class="materialize-textarea" disabled style="margin-top: 10px;" cols="40" rows="10"></textarea>
-                <a disabled style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue" onclick="Materialize.toast('Para participar de los comentarios debes Iniciar Sesión/Registrarte.', 4000)"><i class="material-icons left">send</i>submit</a>
+                <a disabled style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue" onclick="Materialize.toast('Para participar de los comentarios debes Iniciar Sesión/Registrarte.', 4000)"><i class="material-icons left">send</i>enviar</a>
               </div>
               <div class="media" align="center">
-                <p style="font-family: 'Baloo Thambi', cursive;font-size: 35px;"><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> inicia sesión </a> / <a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> registrate </a></p>
+                <p style="font-family: 'Baloo Thambi', cursive;font-size: 35px;"><a href="{{route('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> login </a> / <a href="{{route('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> register </a></p>
               </div>
             </div>
               @else
@@ -86,7 +86,7 @@
                 {{csrf_field()}}
                 <p> <img src="{{asset('avatars/'.Auth::user()->image)}}" style="width:42px;height: 42px;border-radius: 50%;margin-right: 10px;margin-left: 20px;" class="circle responsive-img"> {{Auth::user()->name}}</p>
                   <textarea class="materialize-textarea" style="margin-left:20px;" name="answer" cols="40" rows="10"></textarea>
-                  <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
+                  <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>enviar</button>
                 </form>
               </div>
             </div>

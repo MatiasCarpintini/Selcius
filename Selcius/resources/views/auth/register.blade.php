@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Selcius | Register</title>
+<title>Selcius | Registrate</title>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
@@ -51,7 +51,7 @@ body {
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix"><i class="material-icons">account_circle</i></i>
-                <input placeholder="Full Name" type="text" name="name" placeholder="name" required=""  autofocus="">
+                <input placeholder="Username" type="text" name="name" placeholder="name" required=""  autofocus="">
             </div>
         </div>
         <div class="row">
@@ -63,13 +63,13 @@ body {
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">lock_outline</i>
-            <input required type="password" placeholder="Password" name="password">
+            <input required type="password" placeholder="Contraseña" name="password">
           </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">lock_outline</i>
-                <input type="password" placeholder="Password Confirmation" name="password_confirmation">
+                <input type="password" placeholder="Confirmar contraseña" name="password_confirmation">
             </div>
         </div>
         <div class="row">

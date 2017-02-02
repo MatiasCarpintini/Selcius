@@ -104,7 +104,7 @@
         <textarea id="textarea" name="body" required></textarea>
         <br>
 
-        <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>send</button>
+        <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>enviar</button>
 
         {!!Form::close()!!}
 	</div>

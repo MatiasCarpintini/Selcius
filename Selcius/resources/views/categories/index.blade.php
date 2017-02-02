@@ -1,11 +1,11 @@
 @extends('main')
-@section('title', '| Categorias')
+@section('title', '| Categorías')
 @section('content')
 @if(Auth::user()->level == 2)
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-			<p class="text-center" style="font-size: 30px;font-family: 'Quicksand', sans-serif;"><i class="fa fa-puzzle-piece"></i> Categorias</p>
+			<p class="text-center" style="font-size: 30px;font-family: 'Quicksand', sans-serif;"><i class="fa fa-puzzle-piece"></i> Categorías</p>
 			<table class="table">
 				<thead>
 					<tr>
@@ -25,7 +25,7 @@
 						</td>
 						<td><a href="{{route('categories.edit', $category->id)}}" class="btn-flat waves-effect"><i class="fa fa-pencil"></i></a></td>
 						<td>
-     
+
 						{!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE']) !!}
 						<button type="submit" class="btn-flat waves-effect"><i class="material-icons">delete</i></button>
 						{!! Form::close()!!}
@@ -41,14 +41,14 @@
 			<p class="text-center" style="font-size: 30px;font-family: 'Quicksand', sans-serif;"><i class="fa fa-plus"></i> Nueva categoría</p>
 			<br>
 			<div class="col-md-10 col-md-offset-2">
-				
+
 				<div class="input-field col s6">
 				  <i class="fa fa-puzzle-piece prefix"></i>
 		          <label for="name">Nombre</label>
 				  <input type="text" id="name" name="name">
 		        </div>
 				<br>
-				<button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+				<button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
     				<i class="material-icons right">send</i>
   				</button>
 			</div>

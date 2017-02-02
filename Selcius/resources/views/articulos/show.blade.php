@@ -29,8 +29,8 @@
 					<tr>
 						<th>Nombre</th>
 						<th>E-mail</th>
-						<th>Created At</th>
-						<th>Updated At</th>
+						<th>Creado el</th>
+						<th>Actualizado el</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -74,16 +74,16 @@
 			<br>
 			<div class="row">
 				<div class="col-sm-6">
-					{!! Form::open(['route' => ['articulos.destroy', $articulo -> id], 'method' => 'DELETE']) !!}
-						<button type="submit" class="waves-effect waves-light btn red"><i class="fa fa-trash right"></i> delete</button>
+					{!! Form::open(['route' => ['articulos.destroy', $articulo->id], 'method' => 'DELETE']) !!}
+						<button type="submit" class="waves-effect waves-light btn red"><i class="fa fa-trash right"></i> eliminar</button>
 					{!! Form::close()!!}
 				</div>
 				<div class="col-sm-6">
-					<a href="{{route('articulos.edit', $articulo->id)}}" class="btn blue waves-effect waves-light"><i class="fa fa-pencil right"></i> edit</a>
+					<a href="{{route('articulos.edit', $articulo->id)}}" class="btn blue waves-effect waves-light"><i class="fa fa-pencil right"></i> editar</a>
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<a href="{{route('articulos.index')}}" class="waves-effect waves-light default btn"><i class="fa fa-newspaper-o right"></i> back</a>
+				<a href="{{route('articulos.index')}}" class="waves-effect waves-light default btn"><i class="fa fa-newspaper-o right"></i> artículos</a>
 			</div>
 			<br>
 			<br>

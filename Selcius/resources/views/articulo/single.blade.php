@@ -35,7 +35,6 @@
                         <a href="{{route('auth.profiles', $articulo->user->id)}}">
                             <p style="font-size: 35px;font-family: 'Maven Pro', sans-serif;" class="media-heading pull-left" aling="">
                             <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;margin-left:10px;" class="z-depth-4" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$articulo->user->name}}</p></a>
-
                     </div>
                     <p style="margin-top:20px;margin-left: 70px;">{!!$articulo->user->description!!}</p>
                 </div>

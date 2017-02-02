@@ -15,7 +15,7 @@
 			<input type="text" id="name1" name="name">
 		</div>
 		<br>
-		<button class="btn waves-effect waves-light blue" type="submit" name="action">send
+		<button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
 			<i class="material-icons right">send</i>
 		</button>
 		<br>
@@ -28,4 +28,4 @@
 <p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Edit Tag</p>
 <p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Solo administradores</p>
 @endif
-@endsection 
+@endsection

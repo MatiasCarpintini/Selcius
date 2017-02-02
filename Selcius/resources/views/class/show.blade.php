@@ -24,68 +24,68 @@
 @foreach($cursos as $curso)
 	@if($upload->curso_id == $curso->id)
 		@if($curso->level <= Auth::user()->stripe_active)
-						<meta name="_token" content="{!! csrf_token() !!}" />
-						<div class="row">
-							<div class="col-md-13">
-								<div class="col-md-8">
-								<section align="left">
-									<video class="materialboxed responsive-video" width="728" height="415" align="left" style="margin-top: 0px;border: 0px;display: inline-block;padding: 0px;" controls autoplay preload  oncontextmenu="return false">
-										<source src="{{asset("videos/$upload->file")}}" type='video/mp4; codecs="avc1.42c00d"'>
-										<source src="{{asset("videos/$upload->file")}}" type='video/webm; codecs="vorbis,vp8"'>
-										<source src="{{asset("videos/$upload->file")}}" type="video/ogg"/>
-									</video>
-								</section>
-								</div>
-								<div class="col-md-4">
-									<div class="card">
-										<div class="card-image waves-effect waves-block waves-light">
+			<meta name="_token" content="{!! csrf_token() !!}" />
+			<div class="row">
+				<div class="col-md-13">
+					<div class="col-md-8">
+					<section align="left">
+						<video class="materialboxed responsive-video" width="728" height="415" align="left" style="margin-top: 0px;border: 0px;display: inline-block;padding: 0px;" controls autoplay preload  oncontextmenu="return false">
+							<source src="{{asset("videos/$upload->file")}}" type='video/mp4; codecs="avc1.42c00d"'>
+							<source src="{{asset("videos/$upload->file")}}" type='video/webm; codecs="vorbis,vp8"'>
+							<source src="{{asset("videos/$upload->file")}}" type="video/ogg"/>
+						</video>
+					</section>
+					</div>
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-image waves-effect waves-block waves-light">
 
-										</div>
-										<div class="card-content">
-											<img style="margin-left: 20px;" class="activator responsive-img" src="/img/chat.png">
-											<br>
-											<p style="margin-top: 60px;"><span class="card-title activator grey-text text-darken-4">Chat<i class="material-icons right">more_vert</i></span></p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4">Chat<i class="material-icons right">close</i></span>
-											<br>
-											<li class="divider"></li>
-											<br>
-												@foreach($messages as $message)
-													@if($upload->id == $message->upload_id)
-														<div class="row">
-															<div class="direct-chat-msg left">
-																<a href="{{'auth.profiles', $message->user->id}}"><img class="direct-chat-img responsive-img" src="{{asset('avatars/'.$message->user->image)}}" style="width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;"></a>
-																<div class="direct-chat-text">
-																	{!!$message->message!!}
-																	<div class="direct-chat-info clearfix">
-																		<span class="direct-chat-name pull-left"><i class="fa fa-user-o" aria-hidden="true"></i> {!!$message->user->name!!}</span>
-																		<span class="direct-chat-timestamp pull-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ date('F nS, Y - g:iA' , strtotime($message->created_at)) }}</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-													@endif
-												@endforeach
-												<div class="row">
-													<form method="POST" action="{{route('messages.store', $upload->id)}}" id="message">
-														<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-														<textarea required name="message" class="materialize-textarea"></textarea>
-														<button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons left">send</i>enviar</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<p style="font-size: 40px;" class="text-center">{{$upload->title}}</p>
+							</div>
+							<div class="card-content">
+								<img style="margin-left: 20px;" class="activator responsive-img" src="/img/chat.png">
+								<br>
+								<p style="margin-top: 60px;"><span class="card-title activator grey-text text-darken-4">Chat<i class="material-icons right">more_vert</i></span></p>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">Chat<i class="material-icons right">close</i></span>
+								<br>
 								<li class="divider"></li>
 								<br>
-								<div class="row">
-									<div class="col-md-13">
-									<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-									<p style="font-family: 'Quicksand', sans-serif;font-size: 20px;">{!!$upload->description!!}</p>
+									@foreach($messages as $message)
+										@if($upload->id == $message->upload_id)
+											<div class="row">
+												<div class="direct-chat-msg left">
+													<a href="{{'auth.profiles', $message->user->id}}"><img class="direct-chat-img responsive-img" src="{{asset('avatars/'.$message->user->image)}}" style="width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;"></a>
+													<div class="direct-chat-text">
+														{!!$message->message!!}
+														<div class="direct-chat-info clearfix">
+															<span class="direct-chat-name pull-left"><i class="fa fa-user-o" aria-hidden="true"></i> {!!$message->user->name!!}</span>
+															<span class="direct-chat-timestamp pull-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ date('F nS, Y - g:iA' , strtotime($message->created_at)) }}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										@endif
+									@endforeach
+									<div class="row">
+										<form method="POST" action="{{route('messages.store', $upload->id)}}" id="message">
+											<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+											<textarea required name="message" class="materialize-textarea"></textarea>
+											<button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons left">send</i>enviar</button>
+										</form>
+									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+					<p style="font-size: 40px;" class="text-center">{{$upload->title}}</p>
+					<li class="divider"></li>
+					<br>
+					<div class="row">
+						<div class="col-md-13">
+						<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+						<p style="font-family: 'Quicksand', sans-serif;font-size: 20px;">{!!$upload->description!!}</p>
+					</div>
 						@else
 							<link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet">
 							<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">

@@ -1,7 +1,7 @@
 @extends('main')
 
 <?php $titleTag = htmlspecialchars($category->name); ?>
-@section('title', "| Category $titleTag")
+@section('title', "| Categoría $titleTag")
 
 @section('content')
 

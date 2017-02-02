@@ -1,7 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($section->name); ?>
 
-@section('title', "| Edit $titleTag Section")
+@section('title', "| $titleTag")
 
 @section('content')
 @if(Auth::user()->level == 2)
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<br>
-		<button class="btn waves-effect waves-light blue" type="submit" name="action">send
+		<button class="btn waves-effect waves-light blue" type="submit" name="action">enviar
 			<i class="material-icons right">send</i>
 		</button>
 		<br>

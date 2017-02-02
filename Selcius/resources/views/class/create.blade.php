@@ -87,7 +87,7 @@
 				<input type="text" name="slug" id="slug">
 				<label for="slug">Slug</label>
 			</div>
-			<textarea name="description" id="description" cols="30" rows="10"></textarea>	
+			<textarea name="description" id="description" cols="30" rows="10"></textarea>
 			<div class="input-field file-field">
 				<div class="btn">
 					<span>File</span>
@@ -98,7 +98,7 @@
 				</div>
 			</div>
 			<input type="text" value="{{Auth::user()->id}}" name="user_id" hidden>
-			<button type="submit" class="waves-effect waves-light btn blue">send<i class="material-icons right">send</i></button>
+			<button type="submit" class="waves-effect waves-light btn blue">enviar<i class="material-icons right">send</i></button>
 		{!!Form::close()!!}
 	</div>
 </div>

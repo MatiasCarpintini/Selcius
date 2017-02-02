@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', '| Nuevo Curso')
+@section('title', '| Nuevo curso')
 @section('stylesheets')
 
     {!! Html::style('css/parsley.css') !!}
@@ -77,7 +77,7 @@
         </div>
         <div class="input-field">
             <input type="text" name="level" id="level" required placeholder="Level 1 = Premium Users, Level 2 =  Normal Users">
-            <label for="level">Level User</label>
+            <label for="level">Nivel de usuario</label>
         </div>
         <div class="input-field">
             <select class="browser-default" name="section_id">
@@ -112,13 +112,16 @@
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
         </div>
         <br>
-        <button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons right">send</i>send</button>
+        <button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons right">send</i>enviar</button>
 
         {!! Form::close()!!}
 </div>
 @endsection
 @else
-
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <p class="text-center"><i class="fa fa-book fa-5x"></i></p>
+    <p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Crear curso</p>
+    <p class="text-center" style="font-family: 'Comfortaa', cursive;font-size: 40px;">Solo administradores</p>
 @endif
 @section('scripts')
 

@@ -1,7 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($articulo->title); ?>
 
-@section('title', "| Editar - $titleTag")
+@section('title', "| $titleTag - editar")
 
 @section('stylesheets')
 
@@ -93,7 +93,7 @@
 		<div class="input-field">
 			{{ Form::select('category_id', $categories, null, ['class' => 'form-control'])}}
 		</div>
-		<div class="input-field">	
+		<div class="input-field">
 			{{ Form::select('tags[]', $tags, null , ['class' =>	'form-control select2-multi', 'multiple' => 'multiple'] )}}
 		</div>
 		<div class="file-field input-field">
@@ -113,15 +113,15 @@
 	<div class="col-md-4">
 		<div class="well">
 			<dl class="dl-horizontal">
-				<p class="font-size: 16px;"><i class="fa fa-clock-o"></i> Created At {{date('M j, Y h:ia', strtotime($articulo->created_at))}}</p>
+				<p class="font-size: 16px;"><i class="fa fa-clock-o"></i> Creado el {{date('M j, Y h:ia', strtotime($articulo->created_at))}}</p>
 			</dl>
 			<dl class="dl-horizontal">
-				<p class="font-size: 16px;"><i class="fa fa-clock-o"></i> Updated At {{date('M j, Y h:ia', strtotime($articulo->updated_at))}}</p>
+				<p class="font-size: 16px;"><i class="fa fa-clock-o"></i> Actualizado el {{date('M j, Y h:ia', strtotime($articulo->updated_at))}}</p>
 			</dl>
 			<hr>
 			<div class="row text-center">
 				<a href="{{route('articulos.show', $articulo->id)}}" class="waves-effect waves-light btn red"><i class="fa fa-close left"></i>cancelar</a>
-				<button type="submit" class="waves-effect waves-light btn blue"><i class="fa fa-check left"></i>actualizar</button>
+				<button type="submit" class="waves-effect waves-light btn blue"><i class="fa fa-check left"></i>enviar</button>
 			</div>
 		</div>
 	</div>

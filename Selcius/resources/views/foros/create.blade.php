@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Nuevo Foro')
+@section('title', '| Nuevo foro')
 
 @section('content')
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
@@ -73,7 +73,7 @@
             <textarea name="body" id="body" cols="30" rows="10"></textarea>
         </div>
         <br>
-        <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>send</button>
+        <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">send</i>enviar</button>
 	{!! Form::close() !!}
 </div>
 @endsection

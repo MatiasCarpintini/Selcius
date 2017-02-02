@@ -1,7 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($foro->title); ?>
 
-@section('title', "| $titleTag Edit")
+@section('title', "| $titleTag")
 
 @section('content')
 
@@ -76,8 +76,8 @@
         <div class="input-field">
             <textarea name="body" cols="30" rows="10">{!!$foro->body!!}</textarea>
         </div>
-        <br>    
-        <button class="btn waves-effect waves-light blue"><i class="material-icons right">send</i>send</button>
+        <br>
+        <button class="btn waves-effect waves-light blue"><i class="material-icons right">send</i>enviar</button>
     {!! Form::close() !!}
 </div>
 @endif
