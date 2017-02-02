@@ -69,11 +69,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $this->validate($request, ['name' => 'required', 'email' => 'required|email', 'description' => 'required', 'featured_image' => 'sometimes|image']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required|email', 'description' => 'required', 'featured_image' => 'sometimes|image', 'facebook' => '', 'twitter' => '', 'github' => '', 'linkedin' => '', 'blogger' => '', 'youtube' => '']);
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->description = $request->input('description');
+        $user->name = Purifier::clean($request->input('name'));
+        $user->email = Purifier::clean($request->input('email'));
+        $user->description = Purifier::clean($request->input('description'));
+        $user->facebook = Purifier::clean($request->input('facebook'));
+        $user->twitter = Purifier::clean($request->input('twitter'));
+        $user->github = Purifier::clean($request->input('github'));
+        $user->linkedin = Purifier::clean($request->input('linkedin'));
+        $user->website = Purifier::clean($request->input('website'));
+        $user->youtube = Purifier::clean($request->input('youtube'));
 
         if ($request->hasFile('featured_image')) {
             $image = $request->file('featured_image');

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="blogger" unicode="&#xe800;" d="M0 165l0 369q0 130 93 223t223 93l221 0q65-8 139-57t104-115q1-2 5-9t5-10 4-10 4-12 3-16 4-22 4-29q9-70 26-85 14-13 71-14t65-8l14-11 8-17 3-14-2-256q-1-130-93-223t-222-92l-363 0q-130 0-223 92t-93 223z m259 5q0-25 18-42t43-18l356 0q25 0 43 18t17 42-17 43-43 17l-356 0q-25 0-43-17t-18-43z m0 362q0-25 18-43t43-18l175 0q25 0 43 18t17 43-17 43-43 17l-175 0q-25 0-43-17t-18-43z" horiz-adv-x="996" />
+</font>
+</defs>
+</svg>

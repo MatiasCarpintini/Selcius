@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.js">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="/css/fontello.css">
 </head>
 
 <body>
@@ -78,6 +80,42 @@ body {
             <i class="material-icons prefix">comment</i>
             <textarea name="description" class="materialize-textarea" placeholder="Description" cols="30" rows="10">{!!$user->description!!}</textarea>
           </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-facebook prefix"></i>
+                <input type="text" name="facebook" placeholder="/username" value="{{$user->facebook}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-twitter prefix"></i>
+                <input type="text" name="twitter" placeholder="/username" value="{{$user->twitter}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-github prefix"></i>
+                <input type="text" name="github" placeholder="/username" value="{{$user->github}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-linkedin prefix"></i>
+                <input type="text" name="linkedin" placeholder="/in/username" value="{{$user->linkedin}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-youtube-play prefix"></i>
+                <input type="text" name="youtube" placeholder="/username" value="{{$user->youtube}}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa fa-link prefix"></i>
+                <input type="text" name="website" placeholder="website" value="{{$user->website}}">
+            </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
