@@ -76,7 +76,7 @@
             <label for="slug">Slug</label>
         </div>
         <div class="input-field">
-            <input type="text" name="level" id="level" required placeholder="Level 1 = Premium Users, Level 2 =  Normal Users">
+            <input type="text" name="level" id="level" required placeholder="Level 1 = Premium Users, Level 0 =  Normal Users">
             <label for="level">Nivel de usuario</label>
         </div>
         <div class="input-field">
