@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 @section('title', "| $titleTag")
 
@@ -30,7 +29,7 @@
 				<div class="col-md-13">
 					<div class="col-md-8">
 					<section align="left">
-						<video class="materialboxed responsive-video" width="728" height="415" align="left" style="margin-top: 0px;border: 0px;display: inline-block;padding: 0px;" controls autoplay preload  oncontextmenu="return false">
+						<video class="materialboxed responsive-video" width="728" height="415" align="left" style="" controls autoplay preload  oncontextmenu="return false">
 							<source src="{{asset("videos/$upload->file")}}" type='video/mp4; codecs="avc1.42c00d"'>
 							<source src="{{asset("videos/$upload->file")}}" type='video/webm; codecs="vorbis,vp8"'>
 							<source src="{{asset("videos/$upload->file")}}" type="video/ogg"/>
@@ -40,46 +39,48 @@
 					<div class="col-md-4">
 						<div class="card">
 							<div class="card-image waves-effect waves-block waves-light">
-
 							</div>
 							<div class="card-content">
-								<img style="margin-left: 20px;" class="activator responsive-img" src="/img/chat.png">
-								<br>
-								<p style="margin-top: 60px;"><span class="card-title activator grey-text text-darken-4">Chat<i class="material-icons right">more_vert</i></span></p>
+								<p><img style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$upload->user->image)}}"><a href="{{route('auth.profiles', $upload->user->id)}}">{{$upload->user->name}}</a></p>
+								<p style="margin-top: 1.3rem;margin-left: 1.3rem;"><i class="fa fa-clock-o"></i> {{date('M j, Y h:ia', strtotime($upload->created_at))}}</p>
+								<p style="margin-left: 1.3rem;"><i class="fa fa-link"></i> /{!! $upload->slug !!}</p>
+								<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+								<p><span class="card-title activator grey-text text-darken-4">Chat <i style="margin-top: 10px;" class="material-icons right">more_vert</i></span></p>
 							</div>
 							<div class="card-reveal">
 								<span class="card-title grey-text text-darken-4">Chat<i class="material-icons right">close</i></span>
 								<br>
 								<li class="divider"></li>
 								<br>
-									@foreach($messages as $message)
-										@if($upload->id == $message->upload_id)
-											<div class="row">
-												<div class="direct-chat-msg left">
-													<a href="{{'auth.profiles', $message->user->id}}"><img class="direct-chat-img responsive-img" src="{{asset('avatars/'.$message->user->image)}}" style="width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;"></a>
-													<div class="direct-chat-text">
-														{!!$message->message!!}
-														<div class="direct-chat-info clearfix">
-															<span class="direct-chat-name pull-left"><i class="fa fa-user-o" aria-hidden="true"></i> {!!$message->user->name!!}</span>
-															<span class="direct-chat-timestamp pull-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ date('F nS, Y - g:iA' , strtotime($message->created_at)) }}</span>
+									<chat>
+										@foreach($messages as $message)
+											@if($upload->id == $message->upload_id)
+												
+												<div class="row">
+													<div class="direct-chat-msg left">
+														<a href="{{route('auth.profiles', $message->user->id)}}"><img class="direct-chat-img responsive-img" src="{{asset('avatars/'.$message->user->image)}}" style="width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;"></a>
+														<div class="direct-chat-text">
+															{!!$message->message!!}
 														</div>
 													</div>
 												</div>
-											</div>
-										@endif
-									@endforeach
+											@endif
+										@endforeach
+									</chat>
 									<div class="row">
-										<form method="POST" action="{{route('messages.store', $upload->id)}}" id="message">
-											<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-											<textarea required name="message" class="materialize-textarea"></textarea>
-											<button class="waves-effect waves-light btn blue" type="submit"><i class="material-icons left">send</i>enviar</button>
-										</form>
+										<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+										<textarea required id="chat_message" name="message" class="materialize-textarea"></textarea>
+										<button id="send" class="waves-effect waves-light btn blue" type="submit"><i class="material-icons left">send</i>enviar</button>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="row"></div>
+					<div class="row">
 					<p style="font-size: 40px;" class="text-center">{{$upload->title}}</p>
+					</div>
 					<li class="divider"></li>
 					<br>
 					<div class="row">
@@ -183,4 +184,32 @@
 			@endif
 		@endforeach
 	@endif
+	<script type="text/javascript">
+	var url = "{{route('messages.store', $upload->id)}}"; 
+	$("#send").click(function() {
+		$.ajax({
+		type: 'post',
+		url: url,
+		data: {
+		  '_token': $('input[name=_token]').val(),
+		  'message': $('textarea[name=message]').val()
+		},
+		success: function(data) {
+		  if ((data.errors)) {
+			$('.error').removeClass('hidden');
+			$('.error').text(data.errors.message);
+		  } else {
+			$('.error').remove();
+			$('chat').append(
+				<?php foreach ($messages as $message): ?>	
+				"<div class='row'><div class='direct-chat-msg left'><a href='{{route('auth.profiles', $message->user->id)}}'><img src='{{asset('avatars/'.$message->user->image)}}' style='width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;'></a></div><div class='direct-chat-text' id='message'>" + data.message + "</div></div>"
+				<?php endforeach ?>
+				);
+			$('#chat_message').val(''); 
+		  }
+		},
+		});
+		$('#message').val('');
+	});
+	</script>
 @endsection

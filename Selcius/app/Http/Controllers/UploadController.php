@@ -34,13 +34,13 @@ class UploadController extends Controller
         return view('class.create')->withCursos($cursos);
     }
 
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
         $upload = Upload::where('slug','=', $slug)->first();
         $messages = Message::all();
         $uploads = Upload::all();
         $cursos = Curso::all();
-        return view('class.show')->withUpload($upload)->withMessages($messages)->withCursos($cursos)->withUploads($uploads);
+        return view('class.show', ['messages' , $messages])->withUpload($upload)->withMessages($messages)->withCursos($cursos)->withUploads($uploads);
     }
     /**
      * Store a newly created resource in storage.

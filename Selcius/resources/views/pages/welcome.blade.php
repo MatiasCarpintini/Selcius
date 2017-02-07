@@ -18,7 +18,7 @@
       <div class="pricing-grids">
       <div class="pricing-grid1">
         <div class="price-value">
-            <p><a href="#"> BASIC</a></p>
+            <p><a href="#"> GRATIS</a></p>
             <p><span>FREE</span></p>
             <div class="sale-box">
         </div>
@@ -37,7 +37,7 @@
       </div>
       <div class="pricing-grid2">
         <div class="price-value two">
-          <p><a href="#">STANDARD</a><p>
+          <p><a href="#">MENSUAL</a><p>
           <p><span>$ 100.00ARS</span><lable> / month</lable></p>
           <div class="sale-box two">
         </div>
@@ -50,13 +50,13 @@
           <li class="whyt"><a href="#">Cursos (Todos) </a></li>
         </ul>
         <div class="cart2">
-          <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debes Iniciar Sesión/Registrarte', 4000)">Order</a>
+          <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debes Iniciar sesión/Registrarte', 4000)">Order</a>
         </div>
         </div>
       </div>
       <div class="pricing-grid3">
         <div class="price-value three">
-          <p><a href="#">PREMIUM</a></p>
+          <p><a href="#">ANUAL</a></p>
           <p><span>$ 1050.00ARS</span><lable> / annual</lable></p>
           <div class="sale-box three">
         </div>
@@ -69,7 +69,7 @@
           <li class="whyt"><a href="#">Cursos (Todos) </a></li>
         </ul>
         <div class="cart3">
-          <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debés Iniciar Sesión/Registrarte', 4000)">Order</a>
+          <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debés Iniciar sesión/Registrarte', 4000)">Order</a>
         </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
       <div class="pricing-grids">
       <div class="pricing-grid1">
         <div class="price-value">
-            <p><a href="#"> BASIC</a></p>
+            <p><a href="#"> GRATIS</a></p>
             <p><span>GRATIS</span></p>
             <div class="sale-box">
         </div>
@@ -101,7 +101,7 @@
       </div>
       <div class="pricing-grid2">
         <div class="price-value two">
-          <p><a href="#">STANDARD</a><p>
+          <p><a href="#">MENSUAL</a><p>
           <p><span>$ 100.00ARS</span><lable> / month</lable></p>
           <div class="sale-box two">
         </div>
@@ -139,7 +139,7 @@
       </div>
       <div class="pricing-grid3">
         <div class="price-value three">
-          <p><a href="#">PREMIUM</a></p>
+          <p><a href="#">ANUAL</a></p>
           <p><span>$ 1050.00ARS</span><lable> / annual</lable></p>
           <div class="sale-box three">
         </div>
@@ -153,7 +153,7 @@
         </ul>
             @if(Auth::user()->stripe_active == 1)
                 <div class="cart3">
-                    <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debés Iniciar Sesión/Registrarte', 4000)">Order</a>
+                    <a onclick="Materialize.toast('Antes de actualizar/adquirir tú membresía debés Iniciar sesión/Registrarte', 4000)">Order</a>
               </div>
             @else
             <div class="cart3">

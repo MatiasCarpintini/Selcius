@@ -60,7 +60,7 @@ class MensajeController extends Controller
 
         $message->save();
 
-        return redirect()->route('class.show', [$upload->slug]);
+        return response()->json($message);
 
     }
 
