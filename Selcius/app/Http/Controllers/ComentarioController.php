@@ -33,7 +33,7 @@ class ComentarioController extends Controller
 
         $comentario->save();
 
-        return redirect()->route('courses.single', $comentario->curso->slug);
+        return response()->json($comentario);
     }
 
     public function edit($id)

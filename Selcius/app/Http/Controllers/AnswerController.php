@@ -24,19 +24,21 @@ class AnswerController extends Controller
      */
     public function store(Request $request, $foro_id)
     {
-        $this->validate($request, [
-            'answer' => 'required'
-        ]);
-        $answer = new Answer();
+        $this->validate($request, array(
+            'answer'   =>  'required'
+            ));
+
         $foro = Foro::find($foro_id);
+        $users = User::all();
+        $answer = new Answer();
+        $answer->answer = Purifier::clean($request->answer);
         $answer->approved = true;
         $answer->foro()->associate($foro);
         $answer->user_id = Auth::user()->id;
-        $answer->answer = Purifier::clean($request->answer);
 
         $answer->save();
 
-        return redirect()->route('foros.show', $answer->foro->slug);
+        return response()->json($answer);
     }
     public function edit($id){
         $answer = Answer::find($id);

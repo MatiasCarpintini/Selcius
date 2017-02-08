@@ -43,47 +43,44 @@
     <p>{!!$curso->description!!}</p>
     <li class="divider"></li>
     <br>
-    <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> {{ $curso->comentarios()->count() }} Comentario/s</p>
+    <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> Comentario/s</p>
     <br>
-    @if($curso->comentarios->count() == 0)
-
-    @else
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <div class="converstation">
+          <comentarios>
           @foreach($curso->comentarios as $comentario)
-            <div class="media">
+          <div class="row">
+          <div class="panel panel-default">
+            <div class="media" style="margin: 1.3rem;">
                 <div class="media-body">
                     <div class="clearfix">
-                        <p style="font-size: 40px;" class="media-heading pull-left">
-                            <a href="{{route('auth.profiles', $comentario->user->id)}}">
-                                <img style="width: 52px;height: 52px;border-radius: 50%;margin-right: 10px;" class="img-circle responsive-img" src="{{asset('avatars/'.$comentario->user->image)}}">
-                                 {{$comentario->user->name}}
-                            </a>
-                        </p>
-                        <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comentario->created_at))}}</span>
+                        <a href="{{route('auth.profiles', $comentario->user->id)}}">
+                            <p style="font-size: 25px;" class="media-heading pull-left">
+                                <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$comentario->user->image)}}"> {{$comentario->user->name}}
+                            </p>
+                        </a>
                     </div>
-                    <p style="margin-left: 52px;">{{$comentario->comentario}}</p>
-                    @if(Auth::guest())
-
-                    @else
-                    @if(Auth::user()->id == $comentario->user->id)
+                    <p style="margin-left: 52px;" id="comentario">{{$comentario->comentario}}</p>
+                    <br>
+                    <p>
+                    <?php if(Auth::check()&&Auth::user()->id == $comentario->user->id): ?>
                       {{Form::open(['route' => ['comentarios.destroy', $comentario->id], 'method' => "DELETE"])}}
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                      <button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">delete</i></button>
-                      <a class="btn-floating btn-large waves-effect waves-light blue" href="{{route('comentarios.edit', $comentario->id)}}"><i class="material-icons">mode_edit</i></a>
-                      {{Form::open()}}
-                    @else
-                    @endif
-                  @endif
+                        <button class="waves-effect waves-teal btn-flat" align="left" type="submit"><i class="fa fa-trash-o"></i></button> 
+                        <a href="{{route('comentarios.edit', $comentario->id)}}" class="waves-effect waves-teal btn-flat" align="left"><i class="fa fa-pencil"></i></a>
+                      {{Form::close()}}
+                    <?php endif ?> 
+                    <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comentario->created_at))}}</span></p>
                 </div>
             </div>
             <br>
+            </div>
+          </div>
           @endforeach
+          </comentarios>
         </div>
     </div>
   </div>
-  @endif
   <div class="row">
     <div class="converstation">
         @if(Auth::guest())
@@ -103,17 +100,41 @@
             @else
             <div class="media">
             <div class="media-body">
-                <img src="{{asset('avatars/'.Auth::user()->image)}}" class="circle responsive-img" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;">
-              <form action="{{route('comentarios.store', $curso->id)}}" method="POST" id="comment-save">
-              {{csrf_field()}}
-                <textarea class="materialize-textarea" style="margin-top: 35px;" name="comentario" cols="40" rows="10"></textarea>
-                <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>enviar</button>
-              </form>
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                <textarea id="chat_message" class="materialize-textarea" style="margin-left: 20px;" name="comentario" cols="40" rows="10"></textarea>
+                <button id="send" type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
             </div>
           </div>
         @endif
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  //POST COMMENTS
+  var url_post = "{{route('comentarios.store', $curso->id)}}";
 
+  $("#send").click(function() {
+    $.ajax({
+    type: 'post',
+    url: url_post,
+    data: {
+      '_token': $('input[name=_token]').val(),
+      'comentario': $('textarea[name=comentario]').val()
+    },
+    success: function(data) {
+      if ((data.errors)) {
+      $('.error').removeClass('hidden');
+      $('.error').text(data.errors.comentario);
+      } else {
+      $('.error').remove();
+      $('comentarios').append(
+        "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $comentario->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$comentario->user->image)}}'> {{$comentario->user->name}}</p></a></div><p style='margin-left: 52px;'>" + data.comentario + "</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($comentario->created_at))}}</span></p></div></div><br></div></div>"
+        );
+      $('#chat_message').val('');
+      }
+    },
+    });
+    $('#comentario').val('');
+  });
+</script>
 @endsection

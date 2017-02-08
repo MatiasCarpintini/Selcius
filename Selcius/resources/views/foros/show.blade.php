@@ -1,11 +1,7 @@
 @extends('main')
 <?php $titleTag = htmlspecialchars($foro->title); ?>
 @section('title', "| $titleTag")
-
 @section('content')
-@if(Auth::guest())
-
-@else
 <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 <div class="row">
   <div class="col-md-13">
@@ -26,43 +22,44 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-      <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> {{ $foro->answers()->count() }} Respuesta/s</p>
+      <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> Respuesta/s</p>
       <br>
-      @if($foro->answers->count() == 0)
-
-      @else
       <div class="row">
         <div class="col-md-12 col-xs-12">
           <div class="converstation">
-            @foreach($foro->answers as $answer)
-              <div class="media">
-                  <div class="media-body">
-                      <div class="clearfix">
-                          <a href="{{route('auth.profiles', $answer->user->id)}}"><p style="font-size: 40px;" class="media-heading pull-left"><img style="width:52px;height: 52px;border-radius: 50%;margin-right: 10px;" src="{{asset('avatars/'.$answer->user->image)}}" class="responsive-img">{{$answer->user->name}}
-                          </p></a>
-                      </div>
-                      <p>{{$answer->answer}}</p>
-                      <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($answer->created_at))}}</span>
-                      @if(Auth::guest())
-
-                      @else
-                      @if(Auth::user()->id == $answer->user->id)
-                        {{Form::open(['route' => ['answers.destroy', $answer->id], 'method' => "DELETE"])}}
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">delete</i></button>
-                        <a class="btn-floating btn-large waves-effect waves-light blue" href="{{route('answers.edit', $answer->id)}}"><i class="material-icons">mode_edit</i></a>
-                        {{Form::open()}}
-                      @else
-                      @endif
-                    @endif
-                  </div>
+            <comments>
+              @foreach($foro->answers as $answer)
+              <div class="row">
+              <div class="panel panel-default">
+                <div class="media" style="margin: 1.3rem;">
+                    <div class="media-body">
+                        <div class="clearfix">
+                            <a href="{{route('auth.profiles', $answer->user->id)}}">
+                                <p style="font-size: 25px;" class="media-heading pull-left">
+                                    <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$answer->user->image)}}"> {{$answer->user->name}}
+                                </p>
+                            </a>
+                        </div>
+                        <p style="margin-left: 52px;" id="answer">{!!$answer->answer!!}</p>
+                        <br>
+                        <p>
+                        <?php if(Auth::check()&&Auth::user()->id == $answer->user->id): ?>
+                          {{Form::open(['route' => ['answers.destroy', $answer->id], 'method' => "DELETE"])}}
+                            <button class="waves-effect waves-teal btn-flat" align="left" type="submit"><i class="fa fa-trash-o"></i></button> 
+                            <a href="{{route('answers.edit', $answer->id)}}" class="waves-effect waves-teal btn-flat" align="left"><i class="fa fa-pencil"></i></a>
+                          {{Form::close()}}
+                        <?php endif ?> 
+                        <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($answer->created_at))}}</span></p>
+                    </div>
+                </div>
+                <br>
+                </div>
               </div>
-              <br>
-            @endforeach
+              @endforeach
+            </comments>
           </div>
       </div>
     </div>
-    @endif
     <div class="row">
       <div class="converstation">
           @if(Auth::guest())
@@ -81,22 +78,44 @@
             </div>
               @else
               <div class="media">
-              <div class="media-body">
-                <form action="{{route('answers.store', $foro->id)}}" method="POST" id="comment-save">
-                {{csrf_field()}}
-                <p> <img src="{{asset('avatars/'.Auth::user()->image)}}" style="width:42px;height: 42px;border-radius: 50%;margin-right: 10px;margin-left: 20px;" class="circle responsive-img"> {{Auth::user()->name}}</p>
-                  <textarea class="materialize-textarea" style="margin-left:20px;" name="answer" cols="40" rows="10"></textarea>
-                  <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>enviar</button>
-                </form>
+                <div class="media-body">
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                    <textarea id="chat_message" class="materialize-textarea" style="margin-left: 20px;" name="answer" cols="40" rows="10"></textarea>
+                    <button id="send" type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
+                </div>
               </div>
-            </div>
           @endif
       </div>
     </div>
   </div>
   </div>
 </div>
+<script type="text/javascript">
+  //POST COMMENTS
+  var url_post = "{{route('answers.store', $foro->id)}}";
 
-@endif
-
+  $("#send").click(function() {
+    $.ajax({
+    type: 'post',
+    url: url_post,
+    data: {
+      '_token': $('input[name=_token]').val(),
+      'answer': $('textarea[name=answer]').val()
+    },
+    success: function(data) {
+      if ((data.errors)) {
+      $('.error').removeClass('hidden');
+      $('.error').text(data.errors.answer);
+      } else {
+      $('.error').remove();
+      $('comments').append(
+        "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $answer->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$answer->user->image)}}'> {{$answer->user->name}}</p></a></div><p style='margin-left: 52px;' id='answer'>"+ data.answer +"</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($answer->created_at))}}</span></p></div></div><br></div></div>"
+        );
+      $('#chat_message').val('');
+      }
+    },
+    });
+    $('#answer').val('');
+  });
+</script>
 @endsection
