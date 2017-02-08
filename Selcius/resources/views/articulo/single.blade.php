@@ -46,45 +46,44 @@
   </div>
 </div>
     <br>
-    <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> {{ $articulo->comments()->count() }} Comentario/s</p>
+    <p style="font-size: 30px;font-family: 'Fredoka One', sans-serif;color: #33b5e5;" align="center"> Comentario/s</p>
     <br>
-    @if($articulo->comments->count() == 0)
-
-    @else
     <div class="row">
       <div class="col-md-12 col-xs-12">
         <div class="converstation">
+          <comments>
           @foreach($articulo->comments as $comment)
-            <div class="media">
+          <div class="row">
+          <div class="panel panel-default">
+            <div class="media" style="margin: 1.3rem;">
                 <div class="media-body">
                     <div class="clearfix">
                         <a href="{{route('auth.profiles', $comment->user->id)}}">
-                            <p style="font-size: 40px;" class="media-heading pull-left">
-                                <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$articulo->user->image)}}"> {{$comment->user->name}}
+                            <p style="font-size: 25px;" class="media-heading pull-left">
+                                <img class="responsive-img" style="width: 52px;height: 52px;border-radius: 50%;" src="{{asset('avatars/'.$comment->user->image)}}"> {{$comment->user->name}}
                             </p>
                         </a>
                     </div>
-                    <p>{{$comment->comment}}</p>
-                    <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span>
-                    @if(Auth::guest())
-
-                    @else
-                    @if(Auth::user()->id == $comment->user->id)
+                    <p style="margin-left: 52px;" id="comment">{{$comment->comment}}</p>
+                    <br>
+                    <p>
+                    <?php if(Auth::check()&&Auth::user()->id == $comment->user->id): ?>
                       {{Form::open(['route' => ['comments.destroy', $comment->id], 'method' => "DELETE"])}}
-                      <button class="btn-floating btn-large waves-effect waves-light red" type="submit"><i class="material-icons">delete</i></button>
-                      <a class="btn-floating btn-large waves-effect waves-light blue" href="{{route('comments.edit', $comment->id)}}"><i class="material-icons">mode_edit</i></a>
+                        <button class="waves-effect waves-teal btn-flat" align="left" type="submit"><i class="fa fa-trash-o"></i></button> 
+                        <a href="{{route('comments.edit', $comment->id)}}" class="waves-effect waves-teal btn-flat" align="left"><i class="fa fa-pencil"></i></a>
                       {{Form::close()}}
-                    @else
-                    @endif
-                  @endif
+                    <?php endif ?> 
+                    <span class="time pull-right"><i class="fa fa-clock-o"></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span></p>
                 </div>
             </div>
             <br>
+            </div>
+          </div>
           @endforeach
+          </comments>
         </div>
     </div>
   </div>
-  @endif
   <div class="row">
     <div class="converstation">
         @if(Auth::guest())
@@ -104,16 +103,41 @@
             @else
             <div class="media">
             <div class="media-body">
-              <form action="{{route('comments.store', $articulo->id)}}" method="POST">
-              {{csrf_field()}}
-              <p><img class="responsive-img" src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-left: 20px;">{{Auth::user()->name}}</p>
-                <textarea class="materialize-textarea" style="margin-left: 20px;" name="comment" cols="40" rows="10"></textarea>
-                <button type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
-              </form>
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                <textarea id="chat_message" class="materialize-textarea" style="margin-left: 20px;" name="comment" cols="40" rows="10"></textarea>
+                <button id="send" type="submit" style="margin-left: 20px;margin-top: 10px;" class="waves-effect waves-red btn blue"> <i class="material-icons left">send</i>submit</button>
             </div>
           </div>
         @endif
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  //POST COMMENTS
+  var url_post = "{{route('comments.store', $articulo->id)}}";
+
+  $("#send").click(function() {
+    $.ajax({
+    type: 'post',
+    url: url_post,
+    data: {
+      '_token': $('input[name=_token]').val(),
+      'comment': $('textarea[name=comment]').val()
+    },
+    success: function(data) {
+      if ((data.errors)) {
+      $('.error').removeClass('hidden');
+      $('.error').text(data.errors.comment);
+      } else {
+      $('.error').remove();
+      $('comments').append(
+        "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $comment->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$comment->user->image)}}'> {{$comment->user->name}}</p></a></div><p style='margin-left: 52px;'>" + data.comment + "</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span></p></div></div><br></div></div>"
+        );
+      $('#chat_message').val('');
+      }
+    },
+    });
+    $('#comment').val('');
+  });
+</script>
 @endsection

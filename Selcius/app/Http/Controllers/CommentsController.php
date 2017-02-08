@@ -15,7 +15,7 @@ class CommentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'store']);
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -46,7 +46,7 @@ class CommentsController extends Controller
     public function store(Request $request, $articulo_id)
     {
         $this->validate($request, array(
-            'comment'   =>  'required|min:5|max:2000'
+            'comment'   =>  'required'
             ));
 
         $articulo = Articulo::find($articulo_id);

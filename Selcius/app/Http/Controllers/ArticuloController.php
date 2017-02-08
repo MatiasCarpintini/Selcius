@@ -9,6 +9,7 @@ use Selcius\Http\Controllers\Controller;
 use Selcius\Articulo;
 use Selcius\Tag;
 use Selcius\Category;
+use Selcius\Comment;
 use Selcius\User;
 use Auth;
 use Session;

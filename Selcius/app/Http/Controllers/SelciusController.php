@@ -5,6 +5,7 @@ namespace Selcius\Http\Controllers;
 use Illuminate\Http\Request;
 use Selcius\Http\Requests;
 use Selcius\Articulo;
+use Selcius\Comment;
 use Selcius\User;
 
 class SelciusController extends Controller
@@ -18,8 +19,9 @@ class SelciusController extends Controller
     public function getSingle($slug)
     {
    		$articulo = Articulo::where('slug','=', $slug)-> first();
+      $comments = Comment::all();
    		$users = User::all();
-   		return view('articulo.single')-> withArticulo($articulo)->withUsers($users);
+   		return view('articulo.single')-> withArticulo($articulo)->withUsers($users)->withComments($comments);
     }
     
 }
