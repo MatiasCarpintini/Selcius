@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-13">
     <section align="left">
-      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" frameborder="0" class="responsive-video"></iframe>
+      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?rel=0" frameborder="0" class="responsive-video"></iframe>
     </section>
     <div class="col-md-4">
       <div class="card">

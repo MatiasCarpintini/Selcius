@@ -201,7 +201,9 @@
 		  } else {
 			$('.error').remove();
 			$('chat').append(
+				<?php foreach ($curso->messages as $message): ?>
 				"<div class='row'><div class='direct-chat-msg left'><a href='{{route('auth.profiles', $message->user->id)}}'><img src='{{asset('avatars/'.$message->user->image)}}' style='width: 32px;height: 32px;border-radius: 50%;margin-right: 10px;'></a></div><div class='direct-chat-text' id='message'>" + data.message + "</div></div>"
+				<?php endforeach ?>
 				);
 			$('#chat_message').val(''); 
 		  }

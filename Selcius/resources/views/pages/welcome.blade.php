@@ -189,7 +189,7 @@
       <div class="col-md-13">
         <div class="col-md-6">
           <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="responsive-video" width="560" height="315" style="padding-right: 20px;" align="left" src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" frameborder="0"></iframe>
+            <iframe class="responsive-video" width="560" height="315" style="padding-right: 20px;" align="left" src="http://www.youtube.com/embed/{{$curso->video}}?rel=0" frameborder="0"></iframe>
           </div>
         </div>
           <section aling="right">

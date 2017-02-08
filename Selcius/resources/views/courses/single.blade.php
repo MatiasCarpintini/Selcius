@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-md-13">
     <section align="left">
-      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?theme=light&showinfo=0" class="responsive-video"  frameborder="0"></iframe>
+      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?rel=0" class="responsive-video"  frameborder="0"></iframe>
     </section>
     <div class="col-md-4">
       <div class="card">
@@ -128,8 +128,10 @@
       } else {
       $('.error').remove();
       $('comentarios').append(
+        <?php foreach ($curso->comentarios as $comentario): ?>
         "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $comentario->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$comentario->user->image)}}'> {{$comentario->user->name}}</p></a></div><p style='margin-left: 52px;'>" + data.comentario + "</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($comentario->created_at))}}</span></p></div></div><br></div></div>"
         );
+      <?php endforeach ?>
       $('#chat_message').val('');
       }
     },
