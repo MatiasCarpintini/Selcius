@@ -109,9 +109,9 @@
       } else {
       $('.error').remove();
       $('comments').append(
-        <?php foreach ($foro->answers as $answer): ?>
+        <?php if ($foro->answers->count() == 0){ } else{ ?>
         "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $answer->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$answer->user->image)}}'> {{$answer->user->name}}</p></a></div><p style='margin-left: 52px;' id='answer'>"+ data.answer +"</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($answer->created_at))}}</span></p></div></div><br></div></div>"
-        <?php endforeach ?>
+        <?php } ?>
         );
       $('#chat_message').val('');
       }

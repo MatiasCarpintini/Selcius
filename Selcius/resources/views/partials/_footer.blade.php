@@ -2,10 +2,10 @@
 <footer class="page-footer">
     <div class="container">
       <div class="row" align="center">
-        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #3b5998;"><i class="fa fa-facebook" style="color:white;"></i></a>
-        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #00aced;"><i class="fa fa-twitter" style="color:white;"></i></a>
-        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #303030;"><i class="fa fa-github" style="color:white;"></i></a>
-        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #cd201f;"><i class="fa fa-youtube-play" style="color:white;"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #3b5998;"><i aria-hidden="true" class="fa fa-facebook" style="color:white;"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #00aced;"><i aria-hidden="true" class="fa fa-twitter" style="color:white;"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #303030;"><i aria-hidden="true" class="fa fa-github" style="color:white;"></i></a>
+        <a class="btn-floating btn-large waves-effect waves-light" style="background-color: #cd201f;"><i aria-hidden="true" class="fa fa-youtube-play" style="color:white;"></i></a>
       </div>
   </div>
   <div class="footer-copyright">

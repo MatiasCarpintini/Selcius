@@ -10,18 +10,13 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <div class="row">
   <div class="col-md-13">
-    <section align="left">
-      <iframe width="728" height="415" align="left"  src="http://www.youtube.com/embed/{{$curso->video}}?rel=0" class="responsive-video"  frameborder="0"></iframe>
-    </section>
+  <section align="left">
     <div class="col-md-4">
       <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-
-        </div>
         <div class="card-content">
-          <p><img src="{{asset('avatars/'.$curso->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;margin-right: 10px;" class="responsive-img"> By <a href="{{route('auth.profiles', $curso->user->id)}}"> {{$curso->user->name}}</a></p>
-          <img style="margin-left: 20px;" class="activator responsive-img" src="/img/video-camera.png">
-          <p style="margin-top: 20px;"><span class="card-title activator grey-text text-darken-4">Contenido<i class="material-icons right">more_vert</i></span></p>
+          <p align="center" style="float:center;"><img src="{{asset('avatars/'.$curso->user->image)}}" style="width: 42px;height: 42px;border-radius: 50%;" class="responsive-img"> By <a href="{{route('auth.profiles', $curso->user->id)}}"> {{$curso->user->name}}</a></p>
+          <p align="center" style="float:center;"><img class="activator responsive-img" src="/img/video-camera.png"></p>
+          <p><span class="card-title activator grey-text text-darken-4">Contenido<i class="material-icons right">more_vert</i></span></p>
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">Contenido del curso<i class="material-icons right">close</i></span>
@@ -35,6 +30,12 @@
               @endif
             @endforeach
           </div>
+        </div>
+      </div>
+    </section>
+      <div class="col-md-8">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe style="margin-top: 10px;" width="728" height="415" align="right"  src="http://www.youtube.com/embed/{{$curso->video}}?rel=0" class="responsive-video"  frameborder="0"></iframe>
         </div>
       </div>
     </div>
@@ -128,10 +129,10 @@
       } else {
       $('.error').remove();
       $('comentarios').append(
-        <?php foreach ($curso->comentarios as $comentario): ?>
+        <?php if ($curso->comentarios->count() == 0){ } else{ ?>
         "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $comentario->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$comentario->user->image)}}'> {{$comentario->user->name}}</p></a></div><p style='margin-left: 52px;'>" + data.comentario + "</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($comentario->created_at))}}</span></p></div></div><br></div></div>"
+      <?php } ?>
         );
-      <?php endforeach ?>
       $('#chat_message').val('');
       }
     },

@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function() {
 $(".crud-submit").submit(function(e){
         e.preventDefault();

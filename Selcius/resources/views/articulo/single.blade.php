@@ -131,9 +131,9 @@
       } else {
       $('.error').remove();
       $('comments').append(
-        <?php foreach ($articulo->comments as $comment): ?>
+        <?php if ($articulo->comments->count() == 0){ } else{ ?>
         "<div class='row'><div class='panel panel-default'><div class='media' style='margin: 1.3rem;'><div class='media-body'><div class='clearfix'><a href='{{route('auth.profiles', $comment->user->id)}}'><p style='font-size: 25px;' class='media-heading pull-left'><img class='responsive-img' style='width: 52px;height: 52px;border-radius: 50%;' src='{{asset('avatars/'.$comment->user->image)}}'> {{$comment->user->name}}</p></a></div><p style='margin-left: 52px;'>" + data.comment + "</p><br><p><span class='time pull-right'><i class='fa fa-clock-o'></i> {{date('F nS, Y - g:iA', strtotime($comment->created_at))}}</span></p></div></div><br></div></div>"
-        <?php endforeach ?>
+        <?php } ?>
         );
       $('#chat_message').val('');
       }
