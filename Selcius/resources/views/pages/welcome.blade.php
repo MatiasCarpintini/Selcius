@@ -119,19 +119,11 @@
         </div>
         @else
             <div class="cart2">
-            <form action="/" method="POST">
-            {{ csrf_field() }}
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_5AdyS9TXjBTjLjjIiABf4dTb"
-                    data-amount="10000"
-                    data-name="Mensual"
-                    data-plan="Mensual"
-                    data-description="Suscripción Mensual"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto">
-                </script>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="6E8HJRBVRBKY6">
+              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
             </form>
             </div>
         @endif
@@ -157,19 +149,11 @@
               </div>
             @else
             <div class="cart3">
-                <form action="/" method="POST">
-                {{ csrf_field() }}
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <script
-                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_5AdyS9TXjBTjLjjIiABf4dTb"
-                        data-amount="105000"
-                        data-name="Anual"
-                        data-plan="Anual"
-                        data-description="Suscripción Anual"
-                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                        data-locale="auto">
-                    </script>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="P6KKQNQXSSW7E">
+                  <input type="image" src="https://www.paypalobjects.com/es_XC/AR/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
                 </form>
             </div>
             @endif

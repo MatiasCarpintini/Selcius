@@ -15,7 +15,9 @@
         "twbs/bootstrap": "^3.3",
         "laravel/cashier": "~7.0",
         "laravel/cashier-braintree": "~2.0",
-        "consoletvs/charts": "3.*"
+        "consoletvs/charts": "3.*",
+        "guzzlehttp/guzzle": "^6.2",
+        "mercadopago/sdk": "0.5.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -9,12 +9,12 @@
    <div class="card">
     <div class="card-image">
     <br>
-      <p align="center" style="font-size: 40px;font-family: 'Fredoka One', cursive;"><img src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 64px;height: 64px;border-radius: 50%;" class="profile-user-img responsive-img img-circle">{{Auth::user()->name}}@if(Auth::user()->level == 2) <i class="fa fa-bolt" aria-hidden="true" ></i> @else @if(Auth::user()->stripe_active == 1)  <i class="fa fa-diamond" style="color: #CC0000;" aria-hidden="true"></i> @endif @endif
+      <p align="center" style="font-size: 40px;font-family: 'Fredoka One', cursive;"><img src="{{asset('avatars/'.Auth::user()->image)}}" style="width: 64px;height: 64px;border-radius: 50%;" class="profile-user-img responsive-img img-circle">{{Auth::user()->name}}@if(Auth::user()->level == 2) <i class="fa fa-bolt" aria-hidden="true" ></i> @else @if(Auth::user()->stripe_active == 1)  <i class="fa fa-diamond" style="color: #CC0000;" aria-hidden="true"></i> 
+      @endif @endif
       </p>
       <p style="margin: 1.0rem;">
           <i class="fa fa-envelope" aria-hidden="true"></i> {{Auth::user()->email}} <span style="float: right;"><i class="fa fa-clock-o" aria-hidden="true"></i> {{date('F nS, Y', strtotime(Auth::user()->created_at))}}</span>
       </p>
-
     <li class="divider"></li>
     <div class="card-content">
       <link href="https://fonts.googleapis.com/css?family=Spinnaker" rel="stylesheet">
@@ -41,6 +41,13 @@
         @if(Auth::user()->website != "")
         <a href="{{Auth::user()->website}}" class="btn-floating btn-large waves-effect waves-light" style="background-color: #00C851;"><i class="fa fa-link" style="color:white;"></i></a>
         @endif
+      </div>
+      <div class="row" align="center" style="float:center;"> 
+          <div class="col-md-2"> 
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=NM74KYVPK85SN">
+                <img src="https://www.paypalobjects.com/en_US/i/btn/btn_unsubscribe_LG.gif" border="0">
+            </a>    
+        </div>
       </div>
     </div>
     </div>

@@ -6,7 +6,6 @@
         <li class="{{ Request::is('courses') ? "active" : "" }}"><a href="/courses"><i class="fa fa-book"></i>           Cusos</a></li>
         <li class="{{ Request::is('articles') ? "active" : "" }}"><a href="/articles"><i class="fa fa-newspaper-o"></i>   Artículos</a></li>
         <li class="{{ Request::is('foros') ? "active" : "" }}"><a href="/foros"><i class="fa fa-group"></i>   Foros</a></li>
-        <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact"><i class="fa  fa-envelope"></i>     Contacto</a></li>
     </ul>
     @endif
     <ul class="right hide-on-med-and-down">

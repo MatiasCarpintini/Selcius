@@ -54,10 +54,6 @@
 	Route::get('articles/{slug}', ['as' => 'articulo.single', 'uses' => 'SelciusController@getSingle'])-> where ('slug', '[\w\d\-\_]+');
 	Route::get('articles',array('uses' => 'SelciusController@getIndex', 'as' => 'articulo.index'));
 
-	Route::get('contact', 'PagesController@getContacto');
-	Route::post('/', 'PagesController@postContacto');
-
-
 	Route::get('/', 'PagesController@getIndex');
 
 	Route::resource('articulos','ArticuloController');
