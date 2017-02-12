@@ -14,7 +14,14 @@
 </script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<link href="http://vjs.zencdn.net/5.16.0/video-js.css" rel="stylesheet">
 
+<script src="http://vjs.zencdn.net/5.16.0/video.js"></script><!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="http://vjs.zencdn.net/5.8.8/video.min.js"></script>
+<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet"/>
+<script src="//cdn.sc.gl/videojs-hotkeys/0.2/videojs.hotkeys.min.js"></script>
+<script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
 <!--Charts-->
 {!! Charts::assets() !!}
 <script>

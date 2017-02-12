@@ -21,20 +21,28 @@
 			<div class="row">
 				<div class="col-md-13">
 					<div class="col-md-8">
-        				<div align="left" class="embed-responsive embed-responsive-16by9">
-						<video width="728" height="415" align="left" controls preload  oncontextmenu="return false">
+						<video  controls preload="auto" data-setup='{"controls" : true}' id="vid1" class="video-js vjs-fluid" oncontextmenu="return false">
 							<source src="{{asset("videos/$upload->file")}}" type='video/mp4; codecs="avc1.42c00d"'>
 							<source src="{{asset("videos/$upload->file")}}" type='video/webm; codecs="vorbis,vp8"'>
-							<source src="{{asset("videos/$upload->file")}}" type="video/ogg"/>
+							<source src="{{asset("videos/$upload->file")}}" type="video/ogg">
 						</video>
-					</div>
+						<script type="text/javascript">
+							videojs('vidId').ready(function() {
+							  this.hotkeys({
+							    volumeStep: 0.1,
+							    seekStep: 5,
+							    enableModifiersForNumbers: false
+							  });
+							});
+						</script>
 					</div>
 					<div class="col-md-4">
 						<div class="card">
 							<div class="card-content">
 								<p align="center"><img style="width: 42px;height: 42px;border-radius: 50%;" src="{{asset('avatars/'.$upload->user->image)}}"><a href="{{route('auth.profiles', $upload->user->id)}}">{{$upload->user->name}}</a></p>
+								<br>
 								<p align="center"><img src="/img/chat.png" class="responsive-img activator"></p>
-
+								<br><br><br>
 								<p><span class="card-title activator grey-text text-darken-4">Chat <i style="margin-top: 10px;" class="material-icons right">more_vert</i></span></p>
 							</div>
 							<div class="card-reveal">

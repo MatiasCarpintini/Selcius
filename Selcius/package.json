@@ -11,6 +11,7 @@
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0",
     "laravel-elixir-vueify": "^2.0.0",
+    "video.js": "^5.16.0",
     "vue": "^2.0.3",
     "vue-resource": "^1.0.3",
     "vue-route": "^1.5.1",

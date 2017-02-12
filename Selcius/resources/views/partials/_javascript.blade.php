@@ -13,8 +13,6 @@
 <!--<script type="css/styles.js"></script>-->
 <script src="/js/app.js"></script>
 
-
-
 <!-- Include JS files. -->
   <script type="text/javascript" src="/js/froala_editor.min.js"></script>
 
