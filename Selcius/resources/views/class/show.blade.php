@@ -21,20 +21,11 @@
 			<div class="row">
 				<div class="col-md-13">
 					<div class="col-md-8">
-						<video  controls preload="auto" data-setup='{"controls" : true}' id="vid1" class="video-js vjs-fluid" oncontextmenu="return false">
+						<video controls preload="auto" data-setup='{}' id="vid1" class="video-js vjs-fluid">
 							<source src="{{asset("videos/$upload->file")}}" type='video/mp4; codecs="avc1.42c00d"'>
 							<source src="{{asset("videos/$upload->file")}}" type='video/webm; codecs="vorbis,vp8"'>
 							<source src="{{asset("videos/$upload->file")}}" type="video/ogg">
 						</video>
-						<script type="text/javascript">
-							videojs('vidId').ready(function() {
-							  this.hotkeys({
-							    volumeStep: 0.1,
-							    seekStep: 5,
-							    enableModifiersForNumbers: false
-							  });
-							});
-						</script>
 					</div>
 					<div class="col-md-4">
 						<div class="card">

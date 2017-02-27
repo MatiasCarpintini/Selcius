@@ -22,6 +22,8 @@
 <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet"/>
 <script src="//cdn.sc.gl/videojs-hotkeys/0.2/videojs.hotkeys.min.js"></script>
 <script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+<script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-resolution-switcher/0.4.2/videojs-resolution-switcher.min.js"></script>
 <!--Charts-->
 {!! Charts::assets() !!}
 <script>
